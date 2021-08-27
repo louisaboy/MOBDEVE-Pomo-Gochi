@@ -7,53 +7,69 @@
     tools:context=".StoreItemsActivity">
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="410dp"
-        android:layout_height="740dp"
+        android:id="@+id/iv_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:src="@drawable/store"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.161" />
+        app:srcCompat="@drawable/bgapp" />
+
+    <ImageView
+        android:id="@+id/iv_storebg"
+        android:layout_width="390dp"
+        android:layout_height="601dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/storebg" />
+
+    <ImageView
+        android:id="@+id/iv_itembg"
+        android:layout_width="310dp"
+        android:layout_height="415dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_storebg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_storebg"
+        app:layout_constraintVertical_bias="0.752"
+        app:srcCompat="@drawable/itembg" />
+
+    <ImageView
+        android:id="@+id/iv_itembg2"
+        android:layout_width="293dp"
+        android:layout_height="397dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_itembg"
+        app:layout_constraintEnd_toEndOf="@+id/iv_itembg"
+        app:layout_constraintStart_toStartOf="@+id/iv_itembg"
+        app:layout_constraintTop_toTopOf="@+id/iv_itembg"
+        app:srcCompat="@drawable/itembg2" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_store_items"
-        android:layout_width="279dp"
-        android:layout_height="370dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.598" />
-
-    <ImageButton
-        android:id="@+id/ib_settings"
-        android:layout_width="77dp"
-        android:layout_height="77dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/settingsbutton" />
-
-    <ImageButton
-        android:id="@+id/ib_shop"
-        android:layout_width="77dp"
-        android:layout_height="77dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toStartOf="@+id/ib_settings"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cart" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_itembg2"
+        app:layout_constraintEnd_toEndOf="@+id/iv_itembg2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/iv_itembg2"
+        app:layout_constraintTop_toTopOf="@+id/iv_itembg2"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/iv_money"
         android:layout_width="225dp"
         android:layout_height="63dp"
-        android:layout_marginTop="6dp"
         android:scaleType="fitStart"
+        app:layout_constraintBottom_toTopOf="@+id/iv_storebg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/money" />
@@ -65,11 +81,11 @@
         android:text="00000"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/iv_storebg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.246"
+        app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toStartOf="@+id/iv_money"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.035" />
+        app:layout_constraintTop_toTopOf="@+id/iv_bg"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
