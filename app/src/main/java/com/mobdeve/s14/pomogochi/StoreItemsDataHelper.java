@@ -5,8 +5,8 @@ import java.util.Collections;
 
 public class StoreItemsDataHelper {
     public ArrayList<StoreItem> initializeData() {
-        String[] itemNames = {"Wonderer", "JustMe", "TravelingNomad", "WelcomeToMyLife"};
-        int[] itemImages = {R.drawable.person1, R.drawable.person2, R.drawable.person3, R.drawable.person4};
+        String[] itemNames = {"pet1", "pet2", "pet3", "pet4"};
+        int[] itemImages = {R.drawable.pet2, R.drawable.pet3, R.drawable.pet4, R.drawable.pet5};
 
         ArrayList<StoreItem> data = new ArrayList<>();
         data.add(new StoreItem(

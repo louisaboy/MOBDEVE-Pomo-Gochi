@@ -26,7 +26,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/iv_buy"
         android:layout_width="141dp"
         android:layout_height="38dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
@@ -34,6 +34,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_item_price"
         app:srcCompat="@drawable/btn_buy" />
+
+    <ImageView
+        android:id="@+id/iv_owned"
+        android:layout_width="141dp"
+        android:layout_height="38dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_price"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/btn_owned" />
 
     <TextView
         android:id="@+id/tv_item_name"

@@ -70,7 +70,6 @@ public class PomodoroTimer extends AppCompatActivity {
             num1.setMinValue(0);
             num2.setMaxValue(60);
             num2.setMinValue(0);
-
             num1.setValue(Integer.parseInt(minute));
             num2.setValue(Integer.parseInt(second));
             mBuilder.setView(mView);
