@@ -1,4 +1,4 @@
-package com.mobdeve.s11.sibug.jordan.exercise2;
+package com.mobdeve.s14.pomogochi;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +40,7 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> 
         holder.setIvItemImage(storeItem.getImageId());
         holder.setTvItemName(storeItem.getName());
         holder.setTvItemPrice(storeItem.getPrice());
-        holder.setTvItemStatus(storeItem.getStatus());
+//        holder.setTvItemStatus(storeItem.getStatus());
     }
 
     @Override

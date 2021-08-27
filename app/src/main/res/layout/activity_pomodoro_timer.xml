@@ -10,23 +10,28 @@
         android:id="@+id/imageView8"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pomodoro" />
 
     <TextView
         android:id="@+id/tv_time"
-        android:onClick="popTimePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="238dp"
         android:fontFamily="sans-serif"
+        android:onClick="popTimePicker"
         android:text="00:00"
         android:textSize="110sp"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView8" />
+        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="0.407" />
 
     <ImageView
         android:id="@+id/btn_cancel"
@@ -52,5 +57,7 @@
         app:srcCompat="@drawable/btn_start"
         android:onClick="startTapped"
         android:visibility="visible"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

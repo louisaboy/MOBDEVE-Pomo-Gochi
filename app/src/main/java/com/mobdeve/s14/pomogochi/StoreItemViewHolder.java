@@ -1,4 +1,4 @@
-package com.mobdeve.s11.sibug.jordan.exercise2;
+package com.mobdeve.s14.pomogochi;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -18,7 +18,7 @@ public class StoreItemViewHolder extends RecyclerView.ViewHolder {
         this.ivItemImage = itemView.findViewById(R.id.iv_item_img);
         this.tvItemName = itemView.findViewById(R.id.tv_item_name);
         this.tvItemPrice = itemView.findViewById(R.id.tv_item_price);
-        this.tvItemStatus = itemView.findViewById(R.id.tv_item_status);
+//        this.tvItemStatus = itemView.findViewById(R.id.tv_item_status);
     }
 
 //    public TextView getTvItemName() {

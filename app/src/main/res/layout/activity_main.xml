@@ -8,6 +8,7 @@
 
     <ImageView
         android:id="@+id/iv_background"
+        android:scaleType="fitXY"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,5 +87,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/todo" />
+
+    <TextView
+        android:id="@+id/tv_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00000"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_money"
+        app:layout_constraintEnd_toEndOf="@+id/iv_money"
+        app:layout_constraintStart_toStartOf="@+id/iv_money"
+        app:layout_constraintTop_toTopOf="@+id/iv_money" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.mobdeve.s11.sibug.jordan.exercise2;
+package com.mobdeve.s14.pomogochi;
 
 import java.util.ArrayList;
 import java.util.Collections;

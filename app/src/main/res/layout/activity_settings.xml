@@ -8,6 +8,7 @@
 
     <ImageView
         android:id="@+id/iv_settings_background"
+        android:scaleType="fitXY"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -93,7 +94,5 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/reset" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
