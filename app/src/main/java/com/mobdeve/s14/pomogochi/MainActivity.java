@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initNavigation();
 
         iv_timer = findViewById(R.id.iv_timer);
         iv_todo = findViewById(R.id.iv_todo);
@@ -75,5 +76,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(toPomodoroIntent);
     }
 
+    private void initNavigation(){
+        final int uiOptions = View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(uiOptions);
+    }
 
 }
