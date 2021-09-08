@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/iv_settings_background"
-        android:scaleType="fitXY"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,9 +21,10 @@
         android:id="@+id/s_music"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="230dp"
         android:layout_marginEnd="85dp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="223dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
         android:id="@+id/s_sound"
@@ -48,9 +49,8 @@
         android:layout_width="143dp"
         android:layout_height="77dp"
         android:layout_marginStart="62dp"
-        android:layout_marginBottom="3dp"
         android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
         app:layout_constraintEnd_toStartOf="@+id/imageButton3"
         app:layout_constraintHorizontal_bias="1.0"
@@ -62,23 +62,22 @@
         android:layout_width="143dp"
         android:layout_height="77dp"
         android:layout_marginEnd="62dp"
-        android:layout_marginBottom="3dp"
         android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButton2"
         app:srcCompat="@drawable/tc" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="286dp"
         android:layout_height="77dp"
-        android:layout_marginStart="62dp"
-        android:layout_marginEnd="62dp"
-        android:layout_marginBottom="196dp"
+        android:layout_marginBottom="192dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/reset" />
 

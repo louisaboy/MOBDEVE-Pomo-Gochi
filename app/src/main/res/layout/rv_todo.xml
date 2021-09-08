@@ -1,51 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ll_recycler"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
-        <ImageView
-            android:id="@+id/iv_todo_background"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/recycler" />
-
-        <TextView
-            android:id="@+id/tv_todo"
-            android:layout_width="wrap_content"
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/hammersmith_one"
-            android:text="TextView"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:buttonTint="@color/colorPrimaryDark"
+            android:id="@+id/mcheckbox"
+            android:text="This is Task 1"
+            android:paddingStart="8dp"/>
+    </RelativeLayout>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="3dp"
-            android:fontFamily="@font/hammersmith_one"
-            android:text="TextView"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_todo" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>
