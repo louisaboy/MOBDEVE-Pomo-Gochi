@@ -19,7 +19,7 @@ public class InformationStorage {
     }
 
     public int getCurrency(String key){
-        return (sharedPreferences.getInt(key, 123));
+        return (sharedPreferences.getInt(key, 100000));
     }
 
     public void setFirst(String key, boolean value) {

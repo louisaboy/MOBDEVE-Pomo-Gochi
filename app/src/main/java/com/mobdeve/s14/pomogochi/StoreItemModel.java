@@ -34,7 +34,20 @@ public class StoreItemModel {
         return name;
     }
 
-    public String getPrice() {
+    public String getStrPrice() {
+        return price;
+    }
+
+    public int getIntPrice() {
+        int price = 0;
+        if(this.price.equals("10K")) {
+            price = 10000;
+        } else if(this.price.equals("25K")) {
+            price = 25000;
+        } else if(this.price.equals("50K")) {
+            price = 50000;
+        }
+
         return price;
     }
 

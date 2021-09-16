@@ -1,9 +1,13 @@
 package com.mobdeve.s14.pomogochi;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,9 +43,30 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> 
 
             if(!storeItem.getOwned()) {
                 // TODO Check if user has enough money
-                storeItem.setOwned(true);
+                int curr = MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY);
 
-                viewHolder.setIvItemBtn(storeItem);
+                int price = storeItem.getIntPrice();
+
+                if(curr > price) {
+                    storeItem.setOwned(true);
+
+                    Log.d("curr", Integer.toString(curr));
+
+                    curr -= price;
+
+                    MainActivity.informationStorage.setCurrency(MainActivity.informationStorage.CURRENCY, curr);
+
+                    StoreItemActivity.tv_money.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
+
+                    Log.d("curr", Integer.toString(curr));
+
+                    viewHolder.setIvItemBtn(storeItem);
+                } else {
+                    // TODO Show Toast
+                    Toast.makeText(parent.getContext(), "Not enough money!", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(parent.getContext(), "Already owned!", Toast.LENGTH_SHORT).show();
             }
 
             storeItemDAO.updateStoreItem(storeItem);
@@ -74,4 +99,8 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> 
 //        this.dataStoreItems.addAll(data);
 //        notifyDataSetChanged();
 //    }
+
+    public void setTvMoney() {
+
+    }
 }

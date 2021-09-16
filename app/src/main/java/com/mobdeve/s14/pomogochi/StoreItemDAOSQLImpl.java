@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -25,7 +24,7 @@ public class StoreItemDAOSQLImpl implements StoreItemDAO{
 
         cv.put(StoreItemDatabase.STORE_ITEM_IMAGE_ID, storeItem.getImageID());
         cv.put(StoreItemDatabase.STORE_ITEM_NAME, storeItem.getName());
-        cv.put(StoreItemDatabase.STORE_ITEM_PRICE, storeItem.getPrice());
+        cv.put(StoreItemDatabase.STORE_ITEM_PRICE, storeItem.getStrPrice());
         cv.put(StoreItemDatabase.STORE_ITEM_OWNED, storeItem.getOwned());
 
         long result = this.database.insert(StoreItemDatabase.TABLE_STORE_ITEM, null, cv);
