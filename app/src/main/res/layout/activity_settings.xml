@@ -51,7 +51,7 @@
         android:layout_marginStart="62dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintBottom_toTopOf="@+id/iv_reset"
         app:layout_constraintEnd_toStartOf="@+id/imageButton3"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,13 +64,13 @@
         android:layout_marginEnd="62dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintBottom_toTopOf="@+id/iv_reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageButton2"
         app:srcCompat="@drawable/tc" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/iv_reset"
         android:layout_width="286dp"
         android:layout_height="77dp"
         android:layout_marginBottom="192dp"
