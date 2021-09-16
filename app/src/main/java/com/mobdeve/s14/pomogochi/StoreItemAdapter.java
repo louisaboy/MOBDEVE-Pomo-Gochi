@@ -1,5 +1,6 @@
 package com.mobdeve.s14.pomogochi;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +15,11 @@ import java.util.ArrayList;
 public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> {
 
     private ArrayList<StoreItemModel> dataStoreItems;
+    private StoreItemDAO storeItemDAO;
 
-    public StoreItemAdapter(ArrayList<StoreItemModel> dataStoreItems) {
+    public StoreItemAdapter(ArrayList<StoreItemModel> dataStoreItems, StoreItemDAO storeItemDAO) {
         this.dataStoreItems = dataStoreItems;
+        this.storeItemDAO = storeItemDAO;
     }
 
     @NonNull
@@ -29,22 +32,46 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> 
 
         StoreItemViewHolder viewHolder = new StoreItemViewHolder(view);
 
+        viewHolder.setIvItemBtnOnClickListener(v -> {
+
+
+            StoreItemModel storeItem = dataStoreItems.get(viewHolder.getBindingAdapterPosition());
+
+            if(!storeItem.getOwned()) {
+                // TODO Check if user has enough money
+                storeItem.setOwned(true);
+
+                viewHolder.setIvItemBtn(storeItem);
+            }
+
+            storeItemDAO.updateStoreItem(storeItem);
+
+            // TODO Check if data in store is actually updated
+            // TODO notifyDataSetChanged might not work since it's in onCreate might need to refresh activity
+
+            this.dataStoreItems.clear();
+            this.dataStoreItems.addAll(storeItemDAO.getAllStoreItem());
+            notifyDataSetChanged();
+        });
+
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull StoreItemViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull StoreItemViewHolder viewHolder, int position) {
         StoreItemModel storeItem = this.dataStoreItems.get(position);
 
-        holder.setIvItemImage(storeItem.getImageID());
-        holder.setTvItemName(storeItem.getName());
-        holder.setTvItemPrice(storeItem.getPrice());
-//        holder.setTvItemStatus(storeItem.getStatus());
+        viewHolder.bindData(storeItem);
     }
 
     @Override
     public int getItemCount() {
         return dataStoreItems.size();
     }
+
+//    public void setData(ArrayList<StoreItemModel> data){
+//        this.dataStoreItems.clear();
+//        this.dataStoreItems.addAll(data);
+//        notifyDataSetChanged();
+//    }
 }

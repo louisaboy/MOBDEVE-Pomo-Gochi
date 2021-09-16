@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -19,10 +20,6 @@ public class StoreItemActivity extends AppCompatActivity {
     private ImageView iv_settings;
     private ImageView iv_home;
 
-    private ImageView iv_buy;
-    private ImageView iv_owned;
-    private boolean owned = false;
-
     private RecyclerView rvStoreItems;
 
     private RecyclerView.LayoutManager rvLayoutManager;
@@ -31,8 +28,12 @@ public class StoreItemActivity extends AppCompatActivity {
 
     private ArrayList<StoreItemModel> dataStoreItems;
 
+    private boolean isActivityReopened = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.storeItemDAO = new StoreItemDAOSQLImpl(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_items);
 
@@ -44,33 +45,16 @@ public class StoreItemActivity extends AppCompatActivity {
         iv_shop = findViewById(R.id.ib_shop);
         iv_settings = findViewById(R.id.ib_settings);
         iv_home = findViewById(R.id.iv_home);
-        iv_buy = findViewById(R.id.iv_buy);
-        iv_owned = findViewById(R.id.iv_owned);
-
-//        iv_buy.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                owned = true;
-//                iv_owned.setVisibility(View.VISIBLE);
-//                iv_buy.setVisibility(View.INVISIBLE);
-//            }
-//        });
-////
-//////        iv_owned.setOnClickListener(new View.OnClickListener() {
-//////            @Override
-//////            public void onClick(View v) {
-//////                owned = false;
-//////                iv_owned.setVisibility(View.INVISIBLE);
-//////                iv_buy.setVisibility(View.VISIBLE);
-//////            }
-//////        });
-
     }
 
+    // TODO There's a chance that I need to init store item at main activity since main activity will have access to cats din
+
+    // TODO onCreate is being called everytime so the init also gets call everytime duplicating the store items
+
     private void initDataStoreItems() {
-        this.storeItemDAO = new StoreItemDAOSQLImpl(this);
-        StoreItemDataHelper dataHelper = new StoreItemDataHelper();
-        dataHelper.initializeData(this.storeItemDAO);
+        Log.d("init", "dataStoreItems");
+//        StoreItemDataHelper dataHelper = new StoreItemDataHelper();
+//        dataHelper.initializeData(this.storeItemDAO);
         this.dataStoreItems = this.storeItemDAO.getAllStoreItem();
     }
 
@@ -80,9 +64,7 @@ public class StoreItemActivity extends AppCompatActivity {
         this.rvLayoutManager = new GridLayoutManager(this, 3);
         this.rvStoreItems.setLayoutManager(rvLayoutManager);
 
-        this.storeItemAdapter = new StoreItemAdapter(this.dataStoreItems);
+        this.storeItemAdapter = new StoreItemAdapter(this.dataStoreItems, this.storeItemDAO);
         this.rvStoreItems.setAdapter(this.storeItemAdapter);
     }
-
-
 }

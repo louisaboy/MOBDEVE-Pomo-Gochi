@@ -52,8 +52,8 @@ public class TodoListActivity extends AppCompatActivity implements OnDialogClose
                 AddNewTask.newInstance().show(getSupportFragmentManager() , AddNewTask.TAG);
             }
         });
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RecyclerViewTouchHelper(adapter));
-        itemTouchHelper.attachToRecyclerView(mRecyclerview);
+//        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RecyclerViewTouchHelper(adapter));
+//        itemTouchHelper.attachToRecyclerView(mRecyclerview);
     }
 
     @Override
