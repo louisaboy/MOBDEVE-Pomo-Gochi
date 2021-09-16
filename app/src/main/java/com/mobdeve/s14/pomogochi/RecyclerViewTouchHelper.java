@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobdeve.s14.pomogochi.ToDoAdapter;
 
+import java.util.Objects;
+
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class RecyclerViewTouchHelper extends ItemTouchHelper.SimpleCallback {
@@ -57,13 +59,19 @@ public class RecyclerViewTouchHelper extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
 
-        new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                .addSwipeLeftBackgroundColor(ContextCompat.getColor(adapter.getContext() , R.color.colorPrimaryDark))
-                .addSwipeLeftActionIcon(R.drawable.ic_baseline_edit)
-                .addSwipeRightBackgroundColor(Color.RED)
-                .addSwipeRightActionIcon(R.drawable.ic_baseline_delete)
-                .create()
-                .decorate();
+//        new RecyclerViewSwipeDecorator.Builder(c,
+//                Objects.requireNonNull(recyclerView),
+//                viewHolder,
+//                dX,
+//                dY,
+//                actionState,
+//                isCurrentlyActive)
+//                .addSwipeLeftBackgroundColor(ContextCompat.getColor(adapter.getContext() , R.color.colorPrimaryDark))
+//                .addSwipeLeftActionIcon(R.drawable.ic_baseline_edit)
+//                .addSwipeRightBackgroundColor(Color.RED)
+//                .addSwipeRightActionIcon(R.drawable.ic_baseline_delete)
+//                .create()
+//                .decorate();
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
     }
 }

@@ -39,6 +39,8 @@ public class PomodoroTimer extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private Double remainingTime = 20.00;
 
+    private int money;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,6 +122,7 @@ public class PomodoroTimer extends AppCompatActivity {
         String s2 = stime[1];
         int num1 = Integer.parseInt(s1);
         int num2 = Integer.parseInt(s2);
+
         if (num1 != 0 || num2 != 0)
         {
             if(timerStarted == false)
@@ -147,7 +150,11 @@ public class PomodoroTimer extends AppCompatActivity {
                                 dialog.dismiss();
                             }
                         });
+                        money = num1 * 60 + num2;
+                        Log.d("MONEY", String.valueOf(money));
                         finishDialog.show();
+
+
                         tv_timer.setText("00:00");
 
                     }

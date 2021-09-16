@@ -25,6 +25,8 @@ public class TodoListActivity extends AppCompatActivity implements OnDialogClose
     private List<ToDoModel> mList;
     private ToDoAdapter adapter;
 
+    private int money;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
