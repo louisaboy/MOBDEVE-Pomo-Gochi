@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,14 +8,42 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#F87C4C"
-        android:minHeight="?actionBarSize"
-        android:theme="?actionBarTheme">
+        <ImageView
+            android:id="@+id/iv_money"
+            android:layout_width="225dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="6dp"
+            android:scaleType="fitStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/money"></ImageView>
 
         <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00000"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_money"
+            app:layout_constraintEnd_toEndOf="@+id/iv_money"
+            app:layout_constraintStart_toStartOf="@+id/iv_money"
+            app:layout_constraintTop_toTopOf="@+id/iv_money" />
+
+    <ImageView
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="5dp"
+        android:src="@drawable/mytask"
+        app:layout_constraintEnd_toStartOf="@+id/bSave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_money">
+
+    </ImageView>
+
+    <TextView
             android:id="@+id/tvToDo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,29 +51,35 @@
             android:text="To Do List"
             android:textColor="@color/white"
             android:textSize="35sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone" />
 
-        <Button
-            android:id="@+id/bAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:background="#00FFFFFF"
-            android:onClick="newNote"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="35sp"
-            android:textStyle="bold" />
 
-    </androidx.appcompat.widget.Toolbar>
+    <Button
+        android:id="@+id/bSave"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="88dp"
+        android:backgroundTint="#F87C44"
+        android:onClick="newNote"
+        android:text="+"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/rvToDoList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="3dp"
+        android:layout_width="412dp"
+        android:layout_height="558dp"
         android:divider="@color/darkGray"
-        android:dividerHeight="3dp">
+        android:dividerHeight="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
     </ListView>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
