@@ -1,0 +1,142 @@
+Index: app/src/main/java/com/mobdeve/s14/pomogochi/RecyclerViewTouchHelper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.mobdeve.s14.pomogochi;\r\n\r\nimport android.app.AlertDialog;\r\nimport android.content.DialogInterface;\r\nimport android.graphics.Canvas;\r\nimport android.graphics.Color;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.core.content.ContextCompat;\r\nimport androidx.recyclerview.widget.ItemTouchHelper;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport com.mobdeve.s14.pomogochi.ToDoAdapter;\r\n\r\nimport it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;\r\n\r\npublic class RecyclerViewTouchHelper extends ItemTouchHelper.SimpleCallback {\r\n\r\n    private ToDoAdapter adapter;\r\n\r\n    public RecyclerViewTouchHelper(ToDoAdapter adapter) {\r\n        super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);\r\n        this.adapter = adapter;\r\n    }\r\n\r\n    @Override\r\n    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {\r\n        return false;\r\n    }\r\n\r\n    @Override\r\n    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {\r\n        final int position = viewHolder.getAdapterPosition();\r\n        if (direction == ItemTouchHelper.RIGHT){\r\n            AlertDialog.Builder builder = new AlertDialog.Builder(adapter.getContext());\r\n            builder.setTitle(\"Delete Task\");\r\n            builder.setMessage(\"Are You Sure ?\");\r\n            builder.setPositiveButton(\"Yes\", new DialogInterface.OnClickListener() {\r\n                @Override\r\n                public void onClick(DialogInterface dialog, int which) {\r\n                    adapter.deleteTask(position);\r\n                }\r\n            });\r\n            builder.setNegativeButton(\"Cancel\", new DialogInterface.OnClickListener() {\r\n                @Override\r\n                public void onClick(DialogInterface dialog, int which) {\r\n                    adapter.notifyItemChanged(position);\r\n                }\r\n            });\r\n            AlertDialog dialog = builder.create();\r\n            dialog.show();\r\n        }else{\r\n            adapter.editItem(position);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {\r\n\r\n        new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)\r\n                .addSwipeLeftBackgroundColor(ContextCompat.getColor(adapter.getContext() , R.color.colorPrimaryDark))\r\n                .addSwipeLeftActionIcon(R.drawable.ic_baseline_edit)\r\n                .addSwipeRightBackgroundColor(Color.RED)\r\n                .addSwipeRightActionIcon(R.drawable.ic_baseline_delete)\r\n                .create()\r\n                .decorate();\r\n        super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/mobdeve/s14/pomogochi/RecyclerViewTouchHelper.java b/app/src/main/java/com/mobdeve/s14/pomogochi/RecyclerViewTouchHelper.java
+--- a/app/src/main/java/com/mobdeve/s14/pomogochi/RecyclerViewTouchHelper.java	(revision 9851a974f9d5c349ce249a536dc59625724f3d45)
++++ b/app/src/main/java/com/mobdeve/s14/pomogochi/RecyclerViewTouchHelper.java	(date 1631799408529)
+@@ -12,6 +12,8 @@
+ 
+ import com.mobdeve.s14.pomogochi.ToDoAdapter;
+ 
++import java.util.Objects;
++
+ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
+ 
+ public class RecyclerViewTouchHelper extends ItemTouchHelper.SimpleCallback {
+@@ -57,13 +59,19 @@
+     @Override
+     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+ 
+-        new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+-                .addSwipeLeftBackgroundColor(ContextCompat.getColor(adapter.getContext() , R.color.colorPrimaryDark))
+-                .addSwipeLeftActionIcon(R.drawable.ic_baseline_edit)
+-                .addSwipeRightBackgroundColor(Color.RED)
+-                .addSwipeRightActionIcon(R.drawable.ic_baseline_delete)
+-                .create()
+-                .decorate();
++//        new RecyclerViewSwipeDecorator.Builder(c,
++//                Objects.requireNonNull(recyclerView),
++//                viewHolder,
++//                dX,
++//                dY,
++//                actionState,
++//                isCurrentlyActive)
++//                .addSwipeLeftBackgroundColor(ContextCompat.getColor(adapter.getContext() , R.color.colorPrimaryDark))
++//                .addSwipeLeftActionIcon(R.drawable.ic_baseline_edit)
++//                .addSwipeRightBackgroundColor(Color.RED)
++//                .addSwipeRightActionIcon(R.drawable.ic_baseline_delete)
++//                .create()
++//                .decorate();
+         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/mobdeve/s14/pomogochi/PomodoroTimer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.mobdeve.s14.pomogochi;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.app.AlertDialog;\r\nimport android.app.TimePickerDialog;\r\nimport android.content.DialogInterface;\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.os.CountDownTimer;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.ImageView;\r\nimport android.widget.NumberPicker;\r\nimport android.widget.TextView;\r\nimport android.widget.TimePicker;\r\n\r\nimport java.sql.Time;\r\nimport java.util.Locale;\r\nimport java.util.Timer;\r\nimport java.util.TimerTask;\r\n\r\nimport static android.provider.SyncStateContract.Helpers.update;\r\n\r\npublic class PomodoroTimer extends AppCompatActivity {\r\n\r\n    private ImageView iv_start;\r\n    private ImageView iv_cancel;\r\n    private TextView tv_timer;\r\n    private String finaltime;\r\n    private boolean timerStarted = false;\r\n    private ImageView iv_timer;\r\n    private ImageView iv_todo;\r\n    private ImageView iv_shop;\r\n    private ImageView iv_settings;\r\n    private ImageView iv_home;\r\n\r\n    private CountDownTimer countDownTimer;\r\n    private Double remainingTime = 20.00;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_pomodoro_timer);\r\n        tv_timer = findViewById(R.id.tv_time);\r\n        iv_start = findViewById(R.id.btn_start);\r\n        iv_cancel = findViewById(R.id.btn_cancel);\r\n\r\n        iv_timer = findViewById(R.id.iv_timer);\r\n        iv_todo = findViewById(R.id.iv_todo);\r\n        iv_shop = findViewById(R.id.ib_shop);\r\n        iv_settings = findViewById(R.id.ib_settings);\r\n        iv_home = findViewById(R.id.iv_home);\r\n\r\n    }\r\n\r\n    public void popTimePicker(View view) {\r\n            AlertDialog.Builder mBuilder = new AlertDialog.Builder(PomodoroTimer.this);\r\n            View mView = getLayoutInflater().inflate(R.layout.dialog_time, null);\r\n            final NumberPicker num1 = (NumberPicker) mView.findViewById(R.id.num1);\r\n            final NumberPicker num2 = (NumberPicker) mView.findViewById(R.id.num2);\r\n            Button confirm = (Button) mView.findViewById(R.id.btnConfirm);\r\n\r\n            String [] stime = tv_timer.getText().toString().split(\":\");\r\n            String minute = stime[0];\r\n            String second = stime[1];\r\n\r\n            num1.setMaxValue(60);\r\n            num1.setMinValue(0);\r\n            num2.setMaxValue(60);\r\n            num2.setMinValue(0);\r\n            num1.setValue(Integer.parseInt(minute));\r\n            num2.setValue(Integer.parseInt(second));\r\n            mBuilder.setView(mView);\r\n            final AlertDialog dialog = mBuilder.create();\r\n            dialog.show();\r\n\r\n\r\n            confirm.setOnClickListener(new View.OnClickListener() {\r\n                @Override\r\n                public void onClick(View v) {\r\n                    int valuePicker1 = num1.getValue();\r\n                    int valuePicker2 = num2.getValue();\r\n\r\n                    finaltime = \"\";\r\n\r\n                    if (valuePicker1 < 10)\r\n                        finaltime += \"0\" + String.valueOf(valuePicker1);\r\n                    else\r\n                        finaltime += String.valueOf(valuePicker1);\r\n\r\n                    finaltime += \":\";\r\n\r\n                    if (valuePicker2 < 10)\r\n                        finaltime += \"0\" + String.valueOf(valuePicker2);\r\n                    else\r\n                        finaltime += String.valueOf(valuePicker2);\r\n\r\n                    tv_timer.setText(finaltime);\r\n                    dialog.dismiss();\r\n                    if (timerStarted == true)\r\n                    {\r\n                        reset();\r\n                    }\r\n\r\n                }\r\n            });\r\n\r\n\r\n    }\r\n\r\n    public void cancelTapped(View view) {\r\n        reset();\r\n    }\r\n\r\n    public void startTapped(View view) {\r\n        String [] stime = tv_timer.getText().toString().split(\":\");\r\n        String s1 = stime[0];\r\n        String s2 = stime[1];\r\n        int num1 = Integer.parseInt(s1);\r\n        int num2 = Integer.parseInt(s2);\r\n        if (num1 != 0 || num2 != 0)\r\n        {\r\n            if(timerStarted == false)\r\n            {\r\n                timerStarted = true;\r\n                iv_start.setVisibility(View.INVISIBLE);\r\n                iv_cancel.setVisibility((View.VISIBLE));\r\n\r\n                countDownTimer = new CountDownTimer( (num1 * 60 + num2) * 1000, 1000) {\r\n                    @Override\r\n                    public void onTick(long millisUntilFinished) {\r\n                        update((int) millisUntilFinished / 1000);\r\n                    }\r\n\r\n                    @Override\r\n                    public void onFinish() {\r\n                        reset();\r\n//                        tv_timer.setTextSize(90);\r\n                        AlertDialog finishDialog = new AlertDialog.Builder(PomodoroTimer.this).create();\r\n                        finishDialog.setTitle(\"Alert\");\r\n                        finishDialog.setMessage(\"You Completed A Session!\");\r\n                        finishDialog.setButton(AlertDialog.BUTTON_NEUTRAL, \"OK\", new DialogInterface.OnClickListener() {\r\n                            @Override\r\n                            public void onClick(DialogInterface dialog, int which) {\r\n                                dialog.dismiss();\r\n                            }\r\n                        });\r\n                        finishDialog.show();\r\n                        tv_timer.setText(\"00:00\");\r\n\r\n                    }\r\n                }.start();\r\n\r\n            }\r\n            else\r\n            {\r\n                reset();\r\n            }\r\n        }\r\n        else\r\n        {\r\n            AlertDialog invalidDialog = new AlertDialog.Builder(PomodoroTimer.this).create();\r\n            invalidDialog.setTitle(\"Alert\");\r\n            invalidDialog.setMessage(\"Set A Valid Time\");\r\n            invalidDialog.setButton(AlertDialog.BUTTON_NEUTRAL, \"OK\", new DialogInterface.OnClickListener() {\r\n                @Override\r\n                public void onClick(DialogInterface dialog, int which) {\r\n                    dialog.dismiss();\r\n                }\r\n            });\r\n            invalidDialog.show();\r\n        }\r\n\r\n    }\r\n\r\n    private void update(int progress) {\r\n        int minutes = progress / 60;\r\n        int seconds = progress % 60;\r\n        String secondsFinal = \"\";\r\n        String minutesFinal = \"\";\r\n\r\n        if (minutes <= 9)\r\n        {\r\n            minutesFinal = \"0\" + minutes;\r\n        }\r\n        else\r\n        {\r\n            minutesFinal = \"\" + minutes;\r\n        }\r\n\r\n        if (seconds <= 9)\r\n        {\r\n            secondsFinal = \"0\" + seconds;\r\n        }\r\n        else\r\n        {\r\n            secondsFinal = \"\" + seconds;\r\n        }\r\n\r\n        tv_timer.setText(minutesFinal + \":\" + secondsFinal);\r\n\r\n\r\n    }\r\n\r\n    private void reset() {\r\n        tv_timer.setText(finaltime);\r\n        countDownTimer.cancel();\r\n        iv_start.setVisibility(View.VISIBLE);\r\n        iv_cancel.setVisibility(View.INVISIBLE);\r\n        timerStarted = false;\r\n    }\r\n\r\n    private void reset(String value) {\r\n        tv_timer.setText(\"60:00\");\r\n        countDownTimer.cancel();\r\n        iv_start.setVisibility(View.VISIBLE);\r\n        iv_cancel.setVisibility(View.INVISIBLE);\r\n        timerStarted = false;\r\n    }\r\n\r\n    @Override\r\n    protected void onPause() {\r\n        super.onPause();\r\n        if(timerStarted) {\r\n            countDownTimer.cancel();\r\n        }\r\n    }\r\n\r\n    @Override\r\n    protected void onDestroy() {\r\n        super.onDestroy();\r\n        if(timerStarted) {\r\n            countDownTimer.cancel();\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/mobdeve/s14/pomogochi/PomodoroTimer.java b/app/src/main/java/com/mobdeve/s14/pomogochi/PomodoroTimer.java
+--- a/app/src/main/java/com/mobdeve/s14/pomogochi/PomodoroTimer.java	(revision 9851a974f9d5c349ce249a536dc59625724f3d45)
++++ b/app/src/main/java/com/mobdeve/s14/pomogochi/PomodoroTimer.java	(date 1631801230892)
+@@ -39,6 +39,8 @@
+     private CountDownTimer countDownTimer;
+     private Double remainingTime = 20.00;
+ 
++    private int money;
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+@@ -120,6 +122,7 @@
+         String s2 = stime[1];
+         int num1 = Integer.parseInt(s1);
+         int num2 = Integer.parseInt(s2);
++
+         if (num1 != 0 || num2 != 0)
+         {
+             if(timerStarted == false)
+@@ -147,7 +150,11 @@
+                                 dialog.dismiss();
+                             }
+                         });
++                        money = num1 * 60 + num2;
++                        Log.d("MONEY", String.valueOf(money));
+                         finishDialog.show();
++
++
+                         tv_timer.setText("00:00");
+ 
+                     }
+Index: app/src/main/java/com/mobdeve/s14/pomogochi/TodoListActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.mobdeve.s14.pomogochi;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.recyclerview.widget.ItemTouchHelper;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport android.content.DialogInterface;\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.ImageButton;\r\nimport android.widget.ImageView;\r\n\r\nimport com.google.android.material.floatingactionbutton.FloatingActionButton;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Collections;\r\nimport java.util.List;\r\n\r\npublic class TodoListActivity extends AppCompatActivity implements OnDialogCloseListener{\r\n    private RecyclerView mRecyclerview;\r\n    private FloatingActionButton fab;\r\n    private DataBaseHelper myDB;\r\n    private List<ToDoModel> mList;\r\n    private ToDoAdapter adapter;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n\r\n        mRecyclerview = findViewById(R.id.recyclerview);\r\n        fab = findViewById(R.id.fab);\r\n        myDB = new DataBaseHelper(TodoListActivity.this);\r\n        mList = new ArrayList<>();\r\n        adapter = new ToDoAdapter(myDB, TodoListActivity.this);\r\n\r\n        mRecyclerview.setHasFixedSize(true);\r\n        mRecyclerview.setLayoutManager(new LinearLayoutManager(this));\r\n        mRecyclerview.setAdapter(adapter);\r\n\r\n        mList = myDB.getAllTasks();\r\n        Collections.reverse(mList);\r\n        adapter.setTasks(mList);\r\n\r\n        fab.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                AddNewTask.newInstance().show(getSupportFragmentManager() , AddNewTask.TAG);\r\n            }\r\n        });\r\n        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RecyclerViewTouchHelper(adapter));\r\n        itemTouchHelper.attachToRecyclerView(mRecyclerview);\r\n    }\r\n\r\n    @Override\r\n    public void onDialogClose(DialogInterface dialogInterface) {\r\n        mList = myDB.getAllTasks();\r\n        Collections.reverse(mList);\r\n        adapter.setTasks(mList);\r\n        adapter.notifyDataSetChanged();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/mobdeve/s14/pomogochi/TodoListActivity.java b/app/src/main/java/com/mobdeve/s14/pomogochi/TodoListActivity.java
+--- a/app/src/main/java/com/mobdeve/s14/pomogochi/TodoListActivity.java	(revision 9851a974f9d5c349ce249a536dc59625724f3d45)
++++ b/app/src/main/java/com/mobdeve/s14/pomogochi/TodoListActivity.java	(date 1631801296773)
+@@ -25,6 +25,8 @@
+     private List<ToDoModel> mList;
+     private ToDoAdapter adapter;
+ 
++    private int money;
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+Index: .idea/runConfigurations.xml
+===================================================================
+diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations.xml	(revision 9851a974f9d5c349ce249a536dc59625724f3d45)
++++ /dev/null	(revision 9851a974f9d5c349ce249a536dc59625724f3d45)
+@@ -1,10 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="RunConfigurationProducerService">
+-    <option name="ignoredProducers">
+-      <set>
+-        <option value="com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer" />
+-      </set>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision 9851a974f9d5c349ce249a536dc59625724f3d45)
++++ b/.idea/gradle.xml	(date 1631798179915)
+@@ -4,7 +4,7 @@
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
+-        <option name="testRunner" value="PLATFORM" />
++        <option name="testRunner" value="GRADLE" />
+         <option name="distributionType" value="DEFAULT_WRAPPED" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+         <option name="modules">
