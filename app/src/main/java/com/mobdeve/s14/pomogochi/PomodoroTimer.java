@@ -35,7 +35,7 @@ public class PomodoroTimer extends AppCompatActivity {
     private ImageView iv_shop;
     private ImageView iv_settings;
     private ImageView iv_home;
-
+    private TextView tv_money;
     private CountDownTimer countDownTimer;
     private Double remainingTime = 20.00;
 
@@ -54,6 +54,7 @@ public class PomodoroTimer extends AppCompatActivity {
         iv_shop = findViewById(R.id.ib_shop);
         iv_settings = findViewById(R.id.ib_settings);
         iv_home = findViewById(R.id.iv_home);
+        tv_money = findViewById(R.id.tv_money);
 
     }
 
@@ -140,7 +141,6 @@ public class PomodoroTimer extends AppCompatActivity {
                     @Override
                     public void onFinish() {
                         reset();
-//                        tv_timer.setTextSize(90);
                         AlertDialog finishDialog = new AlertDialog.Builder(PomodoroTimer.this).create();
                         finishDialog.setTitle("Alert");
                         finishDialog.setMessage("You Completed A Session!");
@@ -152,8 +152,8 @@ public class PomodoroTimer extends AppCompatActivity {
                         });
                         money = num1 * 60 + num2;
                         Log.d("MONEY", String.valueOf(money));
+                        tv_money.setText(String.valueOf(Integer.parseInt(tv_money.getText().toString()) + money));
                         finishDialog.show();
-
 
                         tv_timer.setText("00:00");
 
