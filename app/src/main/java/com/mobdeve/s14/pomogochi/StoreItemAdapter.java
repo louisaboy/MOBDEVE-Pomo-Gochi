@@ -14,9 +14,11 @@ import java.util.ArrayList;
 public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> {
 
     private ArrayList<StoreItemModel> dataStoreItems;
+    private StoreItemDAO storeItemDAO;
 
-    public StoreItemAdapter(ArrayList<StoreItemModel> dataStoreItems) {
+    public StoreItemAdapter(ArrayList<StoreItemModel> dataStoreItems, StoreItemDAO storeItemDAO) {
         this.dataStoreItems = dataStoreItems;
+        this.storeItemDAO = storeItemDAO;
     }
 
     @NonNull
@@ -29,18 +31,36 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> 
 
         StoreItemViewHolder viewHolder = new StoreItemViewHolder(view);
 
+        viewHolder.setIvItemBtn(v -> {
+
+            // TODO Check if user has enough money
+
+            StoreItemModel storeItem = dataStoreItems.get(viewHolder.getBindingAdapterPosition());
+
+            if(!storeItem.getOwned()) {
+                storeItem.setOwned(false);
+            } else {
+                storeItem.setOwned(true);
+            }
+
+            storeItemDAO.updateStoreItem(storeItem);
+
+            // TODO Check if data in store is actually updated
+            // TODO notifyDataSetChanged might not work since it's in onCreate might need to refresh activity
+
+            this.dataStoreItems.clear();
+            this.dataStoreItems.addAll(storeItemDAO.getAllStoreItem());
+            notifyDataSetChanged();
+        });
+
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull StoreItemViewHolder holder, int position) {
-
         StoreItemModel storeItem = this.dataStoreItems.get(position);
 
-        holder.setIvItemImage(storeItem.getImageID());
-        holder.setTvItemName(storeItem.getName());
-        holder.setTvItemPrice(storeItem.getPrice());
-//        holder.setTvItemStatus(storeItem.getStatus());
+        holder.bindData(storeItem);
     }
 
     @Override
