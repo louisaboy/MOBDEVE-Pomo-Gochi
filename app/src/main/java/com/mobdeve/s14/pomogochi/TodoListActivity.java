@@ -64,10 +64,13 @@ public class TodoListActivity extends AppCompatActivity
         startActivity(newNoteIntent);
     }
 
+
     @Override
     protected void onResume()
     {
+        Note.deleteAll();
         super.onResume();
+        loadFromDBToMemory();
         setNoteAdapter();
     }
 }

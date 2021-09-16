@@ -29,6 +29,11 @@ public class Note
         deleted = null;
     }
 
+    public static void deleteAll ()
+    {
+        noteArrayList.clear();
+    }
+
     public static Note getNoteForID(int passedNoteID)
     {
         for (Note note : noteArrayList)

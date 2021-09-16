@@ -13,7 +13,7 @@ import java.util.Date;
 public class NoteDetailActivity extends AppCompatActivity
 {
     private EditText titleEditText, descEditText;
-    private Button deleteButton;
+    private Button deleteButton, doneButton;
     private Note selectedNote;
 
     @Override
@@ -30,6 +30,7 @@ public class NoteDetailActivity extends AppCompatActivity
         titleEditText = findViewById(R.id.etTitle);
         descEditText = findViewById(R.id.etDesc);
         deleteButton = findViewById(R.id.bDelete);
+        doneButton = findViewById(R.id.bDone);
     }
 
     private void checkForEditNote()
@@ -47,6 +48,7 @@ public class NoteDetailActivity extends AppCompatActivity
         else
         {
             deleteButton.setVisibility(View.INVISIBLE);
+            doneButton.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -74,6 +76,16 @@ public class NoteDetailActivity extends AppCompatActivity
     }
 
     public void deleteNote(View view)
+    {
+        selectedNote.setDeleted(new Date());
+        SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
+        sqLiteManager.updateNoteInDB(selectedNote);
+        finish();
+    }
+
+
+    // allen dito ka mag add ng logic for money
+    public void doneNote(View view)
     {
         selectedNote.setDeleted(new Date());
         SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
