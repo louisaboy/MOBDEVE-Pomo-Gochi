@@ -12,4 +12,6 @@ public interface StoreItemDAO {
 
     //returns a all posts
     ArrayList<StoreItemModel> getAllStoreItem();
+
+    boolean resetStoreItem();
 }

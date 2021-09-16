@@ -26,6 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
         iv_shop = findViewById(R.id.ib_shop);
         iv_settings = findViewById(R.id.ib_settings);
         iv_home = findViewById(R.id.iv_home);
+<<<<<<< Updated upstream
         iv_reset = findViewById(R.id.iv_reset);
 
 
@@ -35,5 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
 
             }
         });
+=======
+>>>>>>> Stashed changes
     }
 }

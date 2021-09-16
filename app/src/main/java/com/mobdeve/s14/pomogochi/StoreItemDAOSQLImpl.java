@@ -65,4 +65,13 @@ public class StoreItemDAOSQLImpl implements StoreItemDAO{
 
         return storeItemArrayList;
     }
+
+    @Override
+    public boolean resetStoreItem() {
+        this.database = this.storeItemDatabase.getWritableDatabase();
+
+        long result = database.delete(storeItemDatabase.TABLE_STORE_ITEM, null, null);
+
+        return (result != -1);
+    }
 }
