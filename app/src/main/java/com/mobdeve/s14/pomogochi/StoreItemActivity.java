@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ public class StoreItemActivity extends AppCompatActivity {
     private ImageView iv_shop;
     private ImageView iv_settings;
     private ImageView iv_home;
+    public static TextView tv_money;
 
     private RecyclerView rvStoreItems;
 
@@ -27,8 +29,6 @@ public class StoreItemActivity extends AppCompatActivity {
     private StoreItemAdapter storeItemAdapter;
 
     private ArrayList<StoreItemModel> dataStoreItems;
-
-    private boolean isActivityReopened = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,10 @@ public class StoreItemActivity extends AppCompatActivity {
         iv_shop = findViewById(R.id.ib_shop);
         iv_settings = findViewById(R.id.ib_settings);
         iv_home = findViewById(R.id.iv_home);
+
+        tv_money = findViewById(R.id.tv_money);
+
+        tv_money.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
     }
 
     // TODO There's a chance that I need to init store item at main activity since main activity will have access to cats din
@@ -52,9 +56,6 @@ public class StoreItemActivity extends AppCompatActivity {
     // TODO onCreate is being called everytime so the init also gets call everytime duplicating the store items
 
     private void initDataStoreItems() {
-        Log.d("init", "dataStoreItems");
-//        StoreItemDataHelper dataHelper = new StoreItemDataHelper();
-//        dataHelper.initializeData(this.storeItemDAO);
         this.dataStoreItems = this.storeItemDAO.getAllStoreItem();
     }
 
