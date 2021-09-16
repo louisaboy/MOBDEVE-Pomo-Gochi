@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageView iv_home;
     private TextView tv_money;
 
-//    private ViewGroup rootLayout1;
     private ImageView iv_pet1;
 
 
@@ -31,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private StoreItemDAO storeItemDAO;
 
     public static InformationStorage informationStorage;
-
-//    private ImageView iv_cat_1, iv_cat_2, iv_cat_3, iv_cat_4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
         // for drag and drop function
         iv_pet1 = (ImageView) findViewById(R.id.iv_pet1);
-//        rootLayout1 = (ViewGroup) findViewById(R.id.view_root);
-
-//        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(150,150);
-//        iv_pet1.setLayoutParams(layoutParams);
-//        iv_pet1.setOnTouchListener(new ChoiceTouchListener());
 
         iv_pet1.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -162,41 +154,4 @@ public class MainActivity extends AppCompatActivity {
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(uiOptions);
     }
-
-//    private final class ChoiceTouchListener implements View.OnTouchListener {
-//        @Override
-//        public boolean onTouch(View v, MotionEvent event) {
-//            final int X = (int) event.getRawX();
-//            final int Y = (int) event.getRawY();
-//            switch (event.getAction() & MotionEvent.ACTION_MASK){
-//                case MotionEvent.ACTION_DOWN:
-//                    ConstraintLayout.LayoutParams lParams = (ConstraintLayout.LayoutParams) v.getLayoutParams();
-//                    x1 = X - lParams.leftMargin;
-//                    y1 = Y - lParams.topMargin;
-//                    break;
-//
-//                case MotionEvent.ACTION_UP:
-//                    break;
-//
-//                case MotionEvent.ACTION_POINTER_DOWN:
-//                    break;
-//
-//                case MotionEvent.ACTION_POINTER_UP:
-//                    break;
-//
-//                case MotionEvent.ACTION_MOVE:
-//                    ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) v.getLayoutParams();
-//
-//                    layoutParams.leftMargin = X - x1;
-//                    layoutParams.topMargin = Y - y1;
-//                    layoutParams.rightMargin = -250;
-//                    layoutParams.bottomMargin = -250;
-//                    v.setLayoutParams(layoutParams);
-//                    break;
-//             }
-//             rootLayout1.invalidate();
-//
-//            return true;
-//        }
-//    }
 }
