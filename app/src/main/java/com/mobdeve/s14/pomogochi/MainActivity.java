@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView iv_settings;
     private ImageView iv_home;
 
+//    private ImageView iv_cat_1, iv_cat_2, iv_cat_3, iv_cat_4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

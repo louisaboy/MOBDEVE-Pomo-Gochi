@@ -63,6 +63,4 @@ public class StoreItemActivity extends AppCompatActivity {
         this.storeItemAdapter = new StoreItemAdapter(this.dataStoreItems, this.storeItemDAO);
         this.rvStoreItems.setAdapter(this.storeItemAdapter);
     }
-
-
 }

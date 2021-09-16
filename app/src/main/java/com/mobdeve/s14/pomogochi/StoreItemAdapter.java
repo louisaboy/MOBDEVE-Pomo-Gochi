@@ -1,5 +1,6 @@
 package com.mobdeve.s14.pomogochi;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,13 +34,14 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> 
 
         viewHolder.setIvItemBtn(v -> {
 
-            // TODO Check if user has enough money
 
             StoreItemModel storeItem = dataStoreItems.get(viewHolder.getBindingAdapterPosition());
 
             if(!storeItem.getOwned()) {
-                storeItem.setOwned(false);
-            } else {
+                // TODO Check if user has enough money
+
+                viewHolder.bindData(storeItem);
+
                 storeItem.setOwned(true);
             }
 
@@ -57,14 +59,20 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull StoreItemViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull StoreItemViewHolder viewHolder, int position) {
         StoreItemModel storeItem = this.dataStoreItems.get(position);
 
-        holder.bindData(storeItem);
+        viewHolder.bindData(storeItem);
     }
 
     @Override
     public int getItemCount() {
         return dataStoreItems.size();
     }
+
+//    public void setData(ArrayList<StoreItemModel> data){
+//        this.dataStoreItems.clear();
+//        this.dataStoreItems.addAll(data);
+//        notifyDataSetChanged();
+//    }
 }
