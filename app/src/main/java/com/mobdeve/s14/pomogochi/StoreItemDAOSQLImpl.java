@@ -72,6 +72,8 @@ public class StoreItemDAOSQLImpl implements StoreItemDAO{
 
         long result = database.delete(storeItemDatabase.TABLE_STORE_ITEM, null, null);
 
+        database.close();
+
         return (result != -1);
     }
 }

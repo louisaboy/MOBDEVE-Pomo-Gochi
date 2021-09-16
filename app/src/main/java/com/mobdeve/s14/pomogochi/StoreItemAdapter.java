@@ -47,7 +47,7 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> 
 
                 int price = storeItem.getIntPrice();
 
-                if(curr > price) {
+                if(curr >= price) {
                     storeItem.setOwned(true);
 
                     Log.d("curr", Integer.toString(curr));
