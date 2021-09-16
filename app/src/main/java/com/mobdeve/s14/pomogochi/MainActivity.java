@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void toShop() {
-        Intent toPomodoroIntent = new Intent(this, StoreItemsActivity.class);
+        Intent toPomodoroIntent = new Intent(this, StoreItemActivity.class);
         startActivity(toPomodoroIntent);
     }
 

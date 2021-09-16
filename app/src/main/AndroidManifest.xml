@@ -11,7 +11,7 @@
         android:theme="@style/Theme.PomoGoshi">
         <activity android:name=".TodoListActivity" />
         <activity android:name=".PomodoroTimer" />
-        <activity android:name=".StoreItemsActivity" />
+        <activity android:name=".StoreItemActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> {
 
-    private ArrayList<StoreItem> dataStoreItems;
+    private ArrayList<StoreItemModel> dataStoreItems;
 
-    public StoreItemAdapter(ArrayList<StoreItem> dataStoreItems) {
+    public StoreItemAdapter(ArrayList<StoreItemModel> dataStoreItems) {
         this.dataStoreItems = dataStoreItems;
     }
 
@@ -35,9 +35,9 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull StoreItemViewHolder holder, int position) {
 
-        StoreItem storeItem = this.dataStoreItems.get(position);
+        StoreItemModel storeItem = this.dataStoreItems.get(position);
 
-        holder.setIvItemImage(storeItem.getImageId());
+        holder.setIvItemImage(storeItem.getImageID());
         holder.setTvItemName(storeItem.getName());
         holder.setTvItemPrice(storeItem.getPrice());
 //        holder.setTvItemStatus(storeItem.getStatus());
