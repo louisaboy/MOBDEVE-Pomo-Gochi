@@ -3,4 +3,7 @@
     <string name="item_name">Item Name</string>
     <string name="item_status">Item Status</string>
     <string name="item_price">Item Price</string>
+    <string name="save">Save</string>
+    <string name="new_task">New Task</string>
+    <string name="tasks">Tasks</string>
 </resources>

@@ -9,6 +9,7 @@
         android:roundIcon="@drawable/pomo_gochi"
         android:supportsRtl="true"
         android:theme="@style/Theme.PomoGoshi">
+        <activity android:name=".NoteDetailActivity"></activity>
         <activity android:name=".TodoListActivity" />
         <activity android:name=".PomodoroTimer" />
         <activity android:name=".StoreItemActivity" />
