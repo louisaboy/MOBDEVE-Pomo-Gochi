@@ -5,8 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
+import android.util.Log;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -29,6 +28,8 @@ public class StoreItemActivity extends AppCompatActivity {
 
     private ArrayList<StoreItemModel> dataStoreItems;
 
+    private boolean isActivityReopened = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.storeItemDAO = new StoreItemDAOSQLImpl(this);
@@ -48,9 +49,12 @@ public class StoreItemActivity extends AppCompatActivity {
 
     // TODO There's a chance that I need to init store item at main activity since main activity will have access to cats din
 
+    // TODO onCreate is being called everytime so the init also gets call everytime duplicating the store items
+
     private void initDataStoreItems() {
-        StoreItemDataHelper dataHelper = new StoreItemDataHelper();
-        dataHelper.initializeData(this.storeItemDAO);
+        Log.d("init", "dataStoreItems");
+//        StoreItemDataHelper dataHelper = new StoreItemDataHelper();
+//        dataHelper.initializeData(this.storeItemDAO);
         this.dataStoreItems = this.storeItemDAO.getAllStoreItem();
     }
 

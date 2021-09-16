@@ -22,7 +22,7 @@ public class StoreItemViewHolder extends RecyclerView.ViewHolder {
         this.ivItemBtn = itemView.findViewById(R.id.iv_item_btn);
     }
 
-    public void setIvItemBtn(View.OnClickListener onClickListener) {
+    public void setIvItemBtnOnClickListener(View.OnClickListener onClickListener) {
         this.ivItemBtn.setOnClickListener(onClickListener);
     }
 
@@ -31,6 +31,14 @@ public class StoreItemViewHolder extends RecyclerView.ViewHolder {
         this.tvItemName.setText(storeItem.getName());
         this.tvItemPrice.setText(storeItem.getPrice());
 
+        if(!storeItem.getOwned()) {
+            this.ivItemBtn.setImageResource(R.drawable.btn_buy);
+        } else {
+            this.ivItemBtn.setImageResource(R.drawable.btn_owned);
+        }
+    }
+
+    public void setIvItemBtn(StoreItemModel storeItem) {
         if(!storeItem.getOwned()) {
             this.ivItemBtn.setImageResource(R.drawable.btn_buy);
         } else {

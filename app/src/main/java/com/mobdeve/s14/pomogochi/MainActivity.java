@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.mobdeve.s14.pomogochi.util.InformationStorage;
+
 public class MainActivity extends AppCompatActivity {
 
     private ImageView iv_timer;
@@ -15,10 +17,26 @@ public class MainActivity extends AppCompatActivity {
     private ImageView iv_settings;
     private ImageView iv_home;
 
+    private StoreItemDAO storeItemDAO;
+
+    public static InformationStorage informationStorage;
+
 //    private ImageView iv_cat_1, iv_cat_2, iv_cat_3, iv_cat_4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Datahelper init can put into initFunction
+        informationStorage = new InformationStorage(this);
+
+        if(informationStorage.getFirst(informationStorage.FIRST)) {
+            this.storeItemDAO = new StoreItemDAOSQLImpl(this);
+            StoreItemDataHelper dataHelper = new StoreItemDataHelper();
+            dataHelper.initializeData(this.storeItemDAO);
+
+            informationStorage.setFirst(informationStorage.FIRST, false);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initNavigation();

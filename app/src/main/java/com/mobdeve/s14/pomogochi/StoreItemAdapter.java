@@ -32,17 +32,16 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemViewHolder> 
 
         StoreItemViewHolder viewHolder = new StoreItemViewHolder(view);
 
-        viewHolder.setIvItemBtn(v -> {
+        viewHolder.setIvItemBtnOnClickListener(v -> {
 
 
             StoreItemModel storeItem = dataStoreItems.get(viewHolder.getBindingAdapterPosition());
 
             if(!storeItem.getOwned()) {
                 // TODO Check if user has enough money
-
-                viewHolder.bindData(storeItem);
-
                 storeItem.setOwned(true);
+
+                viewHolder.setIvItemBtn(storeItem);
             }
 
             storeItemDAO.updateStoreItem(storeItem);
