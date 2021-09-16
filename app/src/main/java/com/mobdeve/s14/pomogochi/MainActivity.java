@@ -1,10 +1,13 @@
 package com.mobdeve.s14.pomogochi;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,11 +22,14 @@ public class MainActivity extends AppCompatActivity {
     private ImageView iv_home;
     private TextView tv_money;
 
+    private ImageView iv_pet1;
+
+
+    private float xDown, yDown;
+
     private StoreItemDAO storeItemDAO;
 
     public static InformationStorage informationStorage;
-
-//    private ImageView iv_cat_1, iv_cat_2, iv_cat_3, iv_cat_4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,43 @@ public class MainActivity extends AppCompatActivity {
         iv_settings = findViewById(R.id.ib_settings);
         iv_home = findViewById(R.id.iv_home);
         tv_money = findViewById(R.id.tv_money);
+
+
+        // for drag and drop function
+        iv_pet1 = (ImageView) findViewById(R.id.iv_pet1);
+
+        iv_pet1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                ;
+                switch (event.getActionMasked()) {
+                    // the user just put his finger down on the image view
+                    case MotionEvent.ACTION_DOWN:
+                        xDown = event.getX();
+                        yDown = event.getY();
+                        break;
+
+                    // the user moved his finger
+                    case MotionEvent.ACTION_MOVE:
+                        float movedX, movedY;
+                        movedX = event.getX();
+                        movedY = event.getY();
+
+                        // calculate how much the user moved its fingers
+                        float distanceX = movedX - xDown;
+                        float distanceY = movedY - yDown;
+
+                        // now move the view to that position
+                        iv_pet1.setX(iv_pet1.getX() + distanceX);
+                        iv_pet1.setY(iv_pet1.getY() + distanceY);
+
+                        break;
+                }
+
+                return true;
+            }
+        });
+
 
         tv_money.setText(String.valueOf(informationStorage.getCurrency(informationStorage.CURRENCY)));
         iv_timer.setOnClickListener(new View.OnClickListener() {
@@ -111,5 +154,4 @@ public class MainActivity extends AppCompatActivity {
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(uiOptions);
     }
-
 }

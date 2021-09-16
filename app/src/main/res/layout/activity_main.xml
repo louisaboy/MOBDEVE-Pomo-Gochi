@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/view_root"
     tools:context=".MainActivity">
 
     <ImageView
@@ -101,7 +102,7 @@
         app:layout_constraintTop_toTopOf="@+id/iv_money" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/iv_pet1"
         android:layout_width="232dp"
         android:layout_height="334dp"
         app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
