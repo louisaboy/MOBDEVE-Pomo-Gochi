@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.mobdeve.s14.pomogochi.util.InformationStorage;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView iv_shop;
     private ImageView iv_settings;
     private ImageView iv_home;
+    private TextView tv_money;
 
     private StoreItemDAO storeItemDAO;
 
@@ -46,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         iv_shop = findViewById(R.id.ib_shop);
         iv_settings = findViewById(R.id.ib_settings);
         iv_home = findViewById(R.id.iv_home);
+        tv_money = findViewById(R.id.tv_money);
 
+        tv_money.setText(String.valueOf(informationStorage.getCurrency(informationStorage.CURRENCY)));
         iv_timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +78,12 @@ public class MainActivity extends AppCompatActivity {
                 toSettings();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        tv_money.setText(String.valueOf(informationStorage.getCurrency(informationStorage.CURRENCY)));
     }
 
     private void toPomodoro() {

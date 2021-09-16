@@ -56,6 +56,7 @@ public class PomodoroTimer extends AppCompatActivity {
         iv_home = findViewById(R.id.iv_home);
         tv_money = findViewById(R.id.tv_money);
 
+        tv_money.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
     }
 
     public void popTimePicker(View view) {
@@ -152,7 +153,13 @@ public class PomodoroTimer extends AppCompatActivity {
                         });
                         money = num1 * 60 + num2;
                         Log.d("MONEY", String.valueOf(money));
+
+
+
                         tv_money.setText(String.valueOf(Integer.parseInt(tv_money.getText().toString()) + money));
+                        int total_money = MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY) + money;
+                        tv_money.setText(String.valueOf(total_money));
+                        MainActivity.informationStorage.setCurrency(MainActivity.informationStorage.CURRENCY, total_money);
                         finishDialog.show();
 
                         tv_timer.setText("00:00");
