@@ -3,7 +3,6 @@ package com.mobdeve.s14.pomogochi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,10 +29,10 @@ public class NoteDetailActivity extends AppCompatActivity
 
     private void initWidgets()
     {
-        titleEditText = findViewById(R.id.etTitle);
-        descEditText = findViewById(R.id.etDesc);
-        deleteButton = findViewById(R.id.bDelete);
-        doneButton = findViewById(R.id.bDone);
+        titleEditText = findViewById(R.id.et_title);
+        descEditText = findViewById(R.id.et_desc);
+        deleteButton = findViewById(R.id.b_delete);
+        doneButton = findViewById(R.id.b_done);
         tv_money = findViewById(R.id.tv_money);
 
         tv_money.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));

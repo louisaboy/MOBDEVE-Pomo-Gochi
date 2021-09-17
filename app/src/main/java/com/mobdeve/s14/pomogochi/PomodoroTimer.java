@@ -3,10 +3,7 @@ package com.mobdeve.s14.pomogochi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -15,14 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.TimePicker;
-
-import java.sql.Time;
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import static android.provider.SyncStateContract.Helpers.update;
 
 public class PomodoroTimer extends AppCompatActivity {
 
@@ -60,12 +49,13 @@ public class PomodoroTimer extends AppCompatActivity {
         tv_money.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
     }
 
+    // creates the Dialog for the Pomodoro Timer
     public void popTimePicker(View view) {
             AlertDialog.Builder mBuilder = new AlertDialog.Builder(PomodoroTimer.this);
             View mView = getLayoutInflater().inflate(R.layout.dialog_time, null);
-            final NumberPicker num1 = (NumberPicker) mView.findViewById(R.id.num1);
-            final NumberPicker num2 = (NumberPicker) mView.findViewById(R.id.num2);
-            Button confirm = (Button) mView.findViewById(R.id.btnConfirm);
+            final NumberPicker num1 = (NumberPicker) mView.findViewById(R.id.tv_num1);
+            final NumberPicker num2 = (NumberPicker) mView.findViewById(R.id.tv_num2);
+            Button confirm = (Button) mView.findViewById(R.id.b_confirm);
 
             String [] stime = tv_timer.getText().toString().split(":");
             String minute = stime[0];
@@ -81,7 +71,7 @@ public class PomodoroTimer extends AppCompatActivity {
             final AlertDialog dialog = mBuilder.create();
             dialog.show();
 
-
+            // confirms that the time is valid
             confirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -115,10 +105,12 @@ public class PomodoroTimer extends AppCompatActivity {
 
     }
 
+    // when user cancels the timer
     public void cancelTapped(View view) {
         reset();
     }
 
+    // when user starts the tiemr
     public void startTapped(View view) {
         String [] stime = tv_timer.getText().toString().split(":");
         String s1 = stime[0];
@@ -190,6 +182,7 @@ public class PomodoroTimer extends AppCompatActivity {
 
     }
 
+    // run-time updates on the timer
     private void update(int progress) {
         int minutes = progress / 60;
         int seconds = progress % 60;
@@ -219,6 +212,7 @@ public class PomodoroTimer extends AppCompatActivity {
 
     }
 
+    // when the user has finished the session or user wants to reset
     private void reset() {
         tv_timer.setText(finaltime);
         countDownTimer.cancel();
@@ -235,6 +229,8 @@ public class PomodoroTimer extends AppCompatActivity {
         timerStarted = false;
     }
 
+
+    // timer Pause
     @Override
     protected void onPause() {
         super.onPause();
@@ -243,6 +239,7 @@ public class PomodoroTimer extends AppCompatActivity {
         }
     }
 
+    // timer refresh or destroy
     @Override
     protected void onDestroy() {
         super.onDestroy();

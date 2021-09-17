@@ -31,20 +31,21 @@
             app:layout_constraintTop_toTopOf="@+id/iv_money" />
 
     <ImageView
+        android:id="@+id/iv_mytasks"
         android:layout_width="320dp"
         android:layout_height="100dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="5dp"
         android:src="@drawable/mytask"
-        app:layout_constraintEnd_toStartOf="@+id/bSave"
+        app:layout_constraintEnd_toStartOf="@+id/b_save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_money">
 
     </ImageView>
 
     <TextView
-            android:id="@+id/tvToDo"
+            android:id="@+id/tv_todo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -56,7 +57,7 @@
 
 
     <Button
-        android:id="@+id/bSave"
+        android:id="@+id/b_save"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_gravity="end"

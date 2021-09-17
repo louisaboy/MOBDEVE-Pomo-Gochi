@@ -31,21 +31,21 @@
         app:layout_constraintTop_toTopOf="@+id/iv_money" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/iv_details"
         android:layout_width="320dp"
         android:layout_height="100dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="5dp"
         android:src="@drawable/details"
-        app:layout_constraintEnd_toStartOf="@+id/bSave"
+        app:layout_constraintEnd_toStartOf="@+id/b_save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_money">
 
     </ImageView>
 
     <TextView
-        android:id="@+id/tvToDo"
+        android:id="@+id/tv_todo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -57,7 +57,7 @@
 
 
     <Button
-        android:id="@+id/bSave"
+        android:id="@+id/b_save"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_gravity="end"
@@ -73,7 +73,7 @@
 
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -87,10 +87,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_details" />
 
     <EditText
-        android:id="@+id/etTitle"
+        android:id="@+id/et_title"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -103,10 +103,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
     <TextView
-        android:id="@+id/tvDesc"
+        android:id="@+id/tv_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -120,10 +120,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
     <EditText
-        android:id="@+id/etDesc"
+        android:id="@+id/et_desc"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -136,10 +136,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_desc" />
 
     <Button
-        android:id="@+id/bDelete"
+        android:id="@+id/b_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -152,13 +152,13 @@
         android:textColor="@color/red"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/bDone"
+        app:layout_constraintEnd_toStartOf="@+id/b_done"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/et_desc" />
 
     <Button
-        android:id="@+id/bDone"
+        android:id="@+id/b_done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -171,6 +171,6 @@
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/et_desc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

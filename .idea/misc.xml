@@ -4,9 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/MOBDEVE-Pomo-Gochi/MOBDEVE-Pomo-Gochi/app/src/main/res/layout/activity_main.xml" value="0.12760416666666666" />
+        <entry key="..\:/MOBDEVE-Pomo-Gochi/MOBDEVE-Pomo-Gochi/app/src/main/res/layout/activity_note_detail.xml" value="0.13697916666666668" />
+        <entry key="..\:/MOBDEVE-Pomo-Gochi/MOBDEVE-Pomo-Gochi/app/src/main/res/layout/activity_pomodoro_timer.xml" value="0.13697916666666668" />
         <entry key="..\:/MOBDEVE-Pomo-Gochi/MOBDEVE-Pomo-Gochi/app/src/main/res/layout/activity_settings.xml" value="0.264" />
         <entry key="..\:/MOBDEVE-Pomo-Gochi/MOBDEVE-Pomo-Gochi/app/src/main/res/layout/activity_store_items.xml" value="0.4195205479452055" />
+        <entry key="..\:/MOBDEVE-Pomo-Gochi/MOBDEVE-Pomo-Gochi/app/src/main/res/layout/activity_todo_list.xml" value="0.1" />
         <entry key="..\:/MOBDEVE-Pomo-Gochi/MOBDEVE-Pomo-Gochi/app/src/main/res/layout/dialog_time.xml" value="0.1" />
+        <entry key="..\:/MOBDEVE-Pomo-Gochi/MOBDEVE-Pomo-Gochi/app/src/main/res/layout/note_cell.xml" value="0.23596014492753623" />
+        <entry key="..\:/MOBDEVE-Pomo-Gochi/MOBDEVE-Pomo-Gochi/app/src/main/res/layout/store_item_template.xml" value="0.1" />
       </map>
     </option>
   </component>
