@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvMoney;
+    private MediaPlayer music;
 
     private StoreItemDAO storeItemDAO;
 
@@ -109,11 +111,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        music = MediaPlayer.create(MainActivity.this, R.raw.genshin);
+        music.start();
         tvMoney.setText(String.valueOf(informationStorage.getCurrency(informationStorage.CURRENCY)));
         this.storeItemDAO = new StoreItemDAOSQLImpl(this);
 
         // TODO Call setCatVisibility()
         setCatVisibility();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        music.stop();
+        music.release();
     }
 
     private void toPomodoro() {

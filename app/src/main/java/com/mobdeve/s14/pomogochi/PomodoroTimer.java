@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -234,6 +235,7 @@ public class PomodoroTimer extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+
         if(timerStarted) {
             countDownTimer.cancel();
         }
