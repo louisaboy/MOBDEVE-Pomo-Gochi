@@ -3,7 +3,6 @@ package com.mobdeve.s14.pomogochi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +16,7 @@ public class NoteDetailActivity extends AppCompatActivity
     private EditText titleEditText, descEditText;
     private Button deleteButton, doneButton;
     private Note selectedNote;
-    private TextView tv_money;
+    private TextView tvMoney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,9 +33,9 @@ public class NoteDetailActivity extends AppCompatActivity
         descEditText = findViewById(R.id.etDesc);
         deleteButton = findViewById(R.id.bDelete);
         doneButton = findViewById(R.id.bDone);
-        tv_money = findViewById(R.id.tv_money);
+        tvMoney = findViewById(R.id.tv_money);
 
-        tv_money.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
+        tvMoney.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
     }
 
     private void checkForEditNote()
@@ -99,9 +98,9 @@ public class NoteDetailActivity extends AppCompatActivity
 
         int money = 1000;
 
-        tv_money.setText(String.valueOf(Integer.parseInt(tv_money.getText().toString()) + money));
+        tvMoney.setText(String.valueOf(Integer.parseInt(tvMoney.getText().toString()) + money));
         int total_money = MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY) + money;
-        tv_money.setText(String.valueOf(total_money));
+        tvMoney.setText(String.valueOf(total_money));
         MainActivity.informationStorage.setCurrency(MainActivity.informationStorage.CURRENCY, total_money);
 
         finish();

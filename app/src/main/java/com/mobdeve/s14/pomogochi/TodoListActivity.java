@@ -3,7 +3,6 @@ package com.mobdeve.s14.pomogochi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 public class TodoListActivity extends AppCompatActivity
 {
     private ListView noteListView;
-    private TextView tv_money;
+    private TextView tvMoney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,9 +29,9 @@ public class TodoListActivity extends AppCompatActivity
     private void initWidgets()
     {
         noteListView = findViewById(R.id.rvToDoList);
-        tv_money = findViewById(R.id.tv_money);
+        tvMoney = findViewById(R.id.tv_money);
 
-        tv_money.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
+        tvMoney.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
     }
 
     private void loadFromDBToMemory() {
@@ -70,7 +69,7 @@ public class TodoListActivity extends AppCompatActivity
     @Override
     protected void onResume()
     {
-        tv_money.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
+        tvMoney.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
 
         Note.deleteAll();
         super.onResume();

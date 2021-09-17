@@ -16,40 +16,26 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView tv_money;
+    private TextView tvMoney;
 
     private StoreItemDAO storeItemDAO;
 
     private ImageView
-            iv_pet1,
-            iv_pet2,
-            iv_pet3,
-            iv_pet4,
-            iv_pet5,
-            iv_pet6,
-            iv_pet7,
-            iv_pet8,
-            iv_pet9,
-            iv_pet10,
-            iv_pet11,
-            iv_pet12,
-            iv_pet13;
+            ivPet1,
+            ivPet2,
+            ivPet3,
+            ivPet4,
+            ivPet5,
+            ivPet6,
+            ivPet7,
+            ivPet8,
+            ivPet9,
+            ivPet10,
+            ivPet11,
+            ivPet12,
+            ivPet13;
 
-    private float
-            xDown, yDown,
-            xDown1, yDown1,
-            xDown2, yDown2,
-            xDown3, yDown3,
-            xDown4, yDown4,
-            xDown5, yDown5,
-            xDown6, yDown6,
-            xDown7, yDown7,
-            xDown8, yDown8,
-            xDown9, yDown9,
-            xDown10, yDown10,
-            xDown11, yDown11,
-            xDown12, yDown12,
-            xDown13, yDown13;
+    private float xDown, yDown;
 
     public static InformationStorage informationStorage;
 
@@ -73,57 +59,57 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initNavigation();
 
-        ImageView iv_timer = findViewById(R.id.iv_timer);
-        ImageView iv_todo = findViewById(R.id.iv_todo);
-        ImageView iv_shop = findViewById(R.id.ib_shop);
-        ImageView iv_settings = findViewById(R.id.ib_settings);
-        tv_money = findViewById(R.id.tv_money);
+        ImageView ivTimer = findViewById(R.id.iv_timer);
+        ImageView ivTodo = findViewById(R.id.iv_todo);
+        ImageView ivShop = findViewById(R.id.ib_shop);
+        ImageView ivSettings = findViewById(R.id.ib_settings);
+        tvMoney = findViewById(R.id.tv_money);
 
 
         // for drag and drop function
-        iv_pet1 = findViewById(R.id.iv_pet1);
-        iv_pet2 = findViewById(R.id.iv_pet2);
-        iv_pet3 = findViewById(R.id.iv_pet3);
-        iv_pet4 = findViewById(R.id.iv_pet4);
-        iv_pet5 = findViewById(R.id.iv_pet5);
-        iv_pet6 = findViewById(R.id.iv_pet6);
-        iv_pet7 = findViewById(R.id.iv_pet7);
-        iv_pet8 = findViewById(R.id.iv_pet8);
-        iv_pet9 = findViewById(R.id.iv_pet9);
-        iv_pet10 = findViewById(R.id.iv_pet10);
-        iv_pet11 = findViewById(R.id.iv_pet11);
-        iv_pet12 = findViewById(R.id.iv_pet12);
-        iv_pet13 = findViewById(R.id.iv_pet13);
+        ivPet1 = findViewById(R.id.iv_pet1);
+        ivPet2 = findViewById(R.id.iv_pet2);
+        ivPet3 = findViewById(R.id.iv_pet3);
+        ivPet4 = findViewById(R.id.iv_pet4);
+        ivPet5 = findViewById(R.id.iv_pet5);
+        ivPet6 = findViewById(R.id.iv_pet6);
+        ivPet7 = findViewById(R.id.iv_pet7);
+        ivPet8 = findViewById(R.id.iv_pet8);
+        ivPet9 = findViewById(R.id.iv_pet9);
+        ivPet10 = findViewById(R.id.iv_pet10);
+        ivPet11 = findViewById(R.id.iv_pet11);
+        ivPet12 = findViewById(R.id.iv_pet12);
+        ivPet13 = findViewById(R.id.iv_pet13);
 
-        setIvPetOnTouchListener(iv_pet1);
-        setIvPetOnTouchListener(iv_pet2);
-        setIvPetOnTouchListener(iv_pet3);
-        setIvPetOnTouchListener(iv_pet4);
-        setIvPetOnTouchListener(iv_pet5);
-        setIvPetOnTouchListener(iv_pet6);
-        setIvPetOnTouchListener(iv_pet7);
-        setIvPetOnTouchListener(iv_pet8);
-        setIvPetOnTouchListener(iv_pet9);
-        setIvPetOnTouchListener(iv_pet10);
-        setIvPetOnTouchListener(iv_pet11);
-        setIvPetOnTouchListener(iv_pet12);
-        setIvPetOnTouchListener(iv_pet13);
+        setIvPetOnTouchListener(ivPet1);
+        setIvPetOnTouchListener(ivPet2);
+        setIvPetOnTouchListener(ivPet3);
+        setIvPetOnTouchListener(ivPet4);
+        setIvPetOnTouchListener(ivPet5);
+        setIvPetOnTouchListener(ivPet6);
+        setIvPetOnTouchListener(ivPet7);
+        setIvPetOnTouchListener(ivPet8);
+        setIvPetOnTouchListener(ivPet9);
+        setIvPetOnTouchListener(ivPet10);
+        setIvPetOnTouchListener(ivPet11);
+        setIvPetOnTouchListener(ivPet12);
+        setIvPetOnTouchListener(ivPet13);
 
 
-        tv_money.setText(String.valueOf(informationStorage.getCurrency(informationStorage.CURRENCY)));
-        iv_timer.setOnClickListener(v -> toPomodoro());
+        tvMoney.setText(String.valueOf(informationStorage.getCurrency(informationStorage.CURRENCY)));
+        ivTimer.setOnClickListener(v -> toPomodoro());
 
-        iv_todo.setOnClickListener(v -> toToDo());
+        ivTodo.setOnClickListener(v -> toToDo());
 
-        iv_shop.setOnClickListener(v -> toShop());
+        ivShop.setOnClickListener(v -> toShop());
 
-        iv_settings.setOnClickListener(v -> toSettings());
+        ivSettings.setOnClickListener(v -> toSettings());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        tv_money.setText(String.valueOf(informationStorage.getCurrency(informationStorage.CURRENCY)));
+        tvMoney.setText(String.valueOf(informationStorage.getCurrency(informationStorage.CURRENCY)));
         this.storeItemDAO = new StoreItemDAOSQLImpl(this);
 
         // TODO Call setCatVisibility()
@@ -189,69 +175,69 @@ public class MainActivity extends AppCompatActivity {
     public void setCatVisibility() {
         ArrayList<StoreItemModel> dataStoreItem = storeItemDAO.getAllStoreItem();
         if(dataStoreItem.get(0).getOwned()) {
-            iv_pet1.setVisibility(View.VISIBLE);
+            ivPet1.setVisibility(View.VISIBLE);
         } else {
-            iv_pet1.setVisibility(View.GONE);
+            ivPet1.setVisibility(View.GONE);
         }
         if(dataStoreItem.get(1).getOwned()) {
-            iv_pet2.setVisibility(View.VISIBLE);
+            ivPet2.setVisibility(View.VISIBLE);
         } else {
-            iv_pet2.setVisibility(View.GONE);
+            ivPet2.setVisibility(View.GONE);
         }
         if(dataStoreItem.get(2).getOwned()) {
-            iv_pet3.setVisibility(View.VISIBLE);
+            ivPet3.setVisibility(View.VISIBLE);
         } else {
-            iv_pet3.setVisibility(View.GONE);
+            ivPet3.setVisibility(View.GONE);
         }
         if(dataStoreItem.get(3).getOwned()) {
-            iv_pet4.setVisibility(View.VISIBLE);
+            ivPet4.setVisibility(View.VISIBLE);
         } else {
-            iv_pet4.setVisibility(View.GONE);
+            ivPet4.setVisibility(View.GONE);
         }
         if(dataStoreItem.get(4).getOwned()) {
-            iv_pet5.setVisibility(View.VISIBLE);
+            ivPet5.setVisibility(View.VISIBLE);
         } else {
-            iv_pet5.setVisibility(View.GONE);
+            ivPet5.setVisibility(View.GONE);
         }
         if(dataStoreItem.get(5).getOwned()) {
-            iv_pet6.setVisibility(View.VISIBLE);
+            ivPet6.setVisibility(View.VISIBLE);
         } else {
-            iv_pet6.setVisibility(View.GONE);
+            ivPet6.setVisibility(View.GONE);
         }
         if(dataStoreItem.get(6).getOwned()) {
-            iv_pet7.setVisibility(View.VISIBLE);
+            ivPet7.setVisibility(View.VISIBLE);
         } else {
-            iv_pet7.setVisibility(View.GONE);
+            ivPet7.setVisibility(View.GONE);
         }
         if(dataStoreItem.get(7).getOwned()) {
-            iv_pet8.setVisibility(View.VISIBLE);
+            ivPet8.setVisibility(View.VISIBLE);
         } else {
-            iv_pet8.setVisibility(View.GONE);
+            ivPet8.setVisibility(View.GONE);
         }
         if(dataStoreItem.get(8).getOwned()) {
-            iv_pet9.setVisibility(View.VISIBLE);
+            ivPet9.setVisibility(View.VISIBLE);
         } else {
-            iv_pet9.setVisibility(View.GONE);
+            ivPet9.setVisibility(View.GONE);
         }
         if(dataStoreItem.get(9).getOwned()) {
-            iv_pet10.setVisibility(View.VISIBLE);
+            ivPet10.setVisibility(View.VISIBLE);
         } else {
-            iv_pet10.setVisibility(View.GONE);
+            ivPet10.setVisibility(View.GONE);
         }
         if(dataStoreItem.get(10).getOwned()) {
-            iv_pet11.setVisibility(View.VISIBLE);
+            ivPet11.setVisibility(View.VISIBLE);
         } else {
-            iv_pet11.setVisibility(View.GONE);
+            ivPet11.setVisibility(View.GONE);
         }
         if(dataStoreItem.get(11).getOwned()) {
-            iv_pet12.setVisibility(View.VISIBLE);
+            ivPet12.setVisibility(View.VISIBLE);
         } else {
-            iv_pet12.setVisibility(View.GONE);
+            ivPet12.setVisibility(View.GONE);
         }
         if(dataStoreItem.get(12).getOwned()) {
-            iv_pet13.setVisibility(View.VISIBLE);
+            ivPet13.setVisibility(View.VISIBLE);
         } else {
-            iv_pet13.setVisibility(View.GONE);
+            ivPet13.setVisibility(View.GONE);
         }
     }
 }
