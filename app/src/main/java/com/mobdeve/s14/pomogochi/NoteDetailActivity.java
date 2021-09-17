@@ -16,7 +16,7 @@ public class NoteDetailActivity extends AppCompatActivity
     private EditText titleEditText, descEditText;
     private Button deleteButton, doneButton;
     private Note selectedNote;
-    private TextView tv_money;
+    private TextView tvMoney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,13 +29,21 @@ public class NoteDetailActivity extends AppCompatActivity
 
     private void initWidgets()
     {
+<<<<<<< HEAD
         titleEditText = findViewById(R.id.et_title);
         descEditText = findViewById(R.id.et_desc);
         deleteButton = findViewById(R.id.b_delete);
         doneButton = findViewById(R.id.b_done);
         tv_money = findViewById(R.id.tv_money);
+=======
+        titleEditText = findViewById(R.id.etTitle);
+        descEditText = findViewById(R.id.etDesc);
+        deleteButton = findViewById(R.id.bDelete);
+        doneButton = findViewById(R.id.bDone);
+        tvMoney = findViewById(R.id.tv_money);
+>>>>>>> e6ef75bd9ff00df4236097f2d258c2121058a0b4
 
-        tv_money.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
+        tvMoney.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
     }
 
     private void checkForEditNote()
@@ -88,8 +96,6 @@ public class NoteDetailActivity extends AppCompatActivity
         finish();
     }
 
-
-    // allen dito ka mag add ng logic for money
     public void doneNote(View view)
     {
         selectedNote.setDeleted(new Date());
@@ -98,9 +104,9 @@ public class NoteDetailActivity extends AppCompatActivity
 
         int money = 1000;
 
-        tv_money.setText(String.valueOf(Integer.parseInt(tv_money.getText().toString()) + money));
+        tvMoney.setText(String.valueOf(Integer.parseInt(tvMoney.getText().toString()) + money));
         int total_money = MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY) + money;
-        tv_money.setText(String.valueOf(total_money));
+        tvMoney.setText(String.valueOf(total_money));
         MainActivity.informationStorage.setCurrency(MainActivity.informationStorage.CURRENCY, total_money);
 
         finish();
