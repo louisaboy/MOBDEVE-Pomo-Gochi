@@ -8,8 +8,36 @@ public class StoreItemDataHelper {
 
     public void initializeData(StoreItemDAO storeItemDAO) {
 
-        String[] itemNames = {"pet1", "pet2", "pet3", "pet4"};
-        int[] itemImages = {R.drawable.pet2, R.drawable.pet3, R.drawable.pet4, R.drawable.pet5};
+        String[] itemNames = {
+                "Heart",
+                "CCS",
+                "Sushi",
+                "Unicorn",
+                "Potter",
+                "Ukulele",
+                "Sad",
+                "Classic",
+                "French Fry",
+                "Slurp",
+                "Sleep",
+                "Omnom",
+                "Family"
+        };
+        int[] itemImages = {
+                R.drawable.pet1,
+                R.drawable.pet2,
+                R.drawable.pet3,
+                R.drawable.pet4,
+                R.drawable.pet5,
+                R.drawable.pet6,
+                R.drawable.pet7,
+                R.drawable.pet8,
+                R.drawable.pet9,
+                R.drawable.pet10,
+                R.drawable.pet11,
+                R.drawable.pet12,
+                R.drawable.pet13
+        };
 
         storeItemDAO.addStoreItem(new StoreItemModel(
                 itemImages[0],
@@ -28,40 +56,40 @@ public class StoreItemDataHelper {
                 itemNames[3],
                 "10K"));
         storeItemDAO.addStoreItem(new StoreItemModel(
-                itemImages[1],
-                itemNames[0],
+                itemImages[4],
+                itemNames[4],
                 "25K"));
         storeItemDAO.addStoreItem(new StoreItemModel(
-                itemImages[2],
-                itemNames[1],
+                itemImages[5],
+                itemNames[5],
                 "25K"));
         storeItemDAO.addStoreItem(new StoreItemModel(
-                itemImages[3],
-                itemNames[2],
+                itemImages[6],
+                itemNames[6],
                 "25K"));
         storeItemDAO.addStoreItem(new StoreItemModel(
-                itemImages[0],
-                itemNames[1],
+                itemImages[7],
+                itemNames[7],
                 "25K"));
         storeItemDAO.addStoreItem(new StoreItemModel(
-                itemImages[1],
-                itemNames[2],
+                itemImages[8],
+                itemNames[8],
                 "25K"));
         storeItemDAO.addStoreItem(new StoreItemModel(
-                itemImages[2],
-                itemNames[3],
+                itemImages[9],
+                itemNames[9],
                 "50K"));
         storeItemDAO.addStoreItem(new StoreItemModel(
-                itemImages[3],
-                itemNames[0],
+                itemImages[10],
+                itemNames[10],
                 "50K"));
         storeItemDAO.addStoreItem(new StoreItemModel(
-                itemImages[0],
-                itemNames[1],
+                itemImages[11],
+                itemNames[11],
                 "50K"));
         storeItemDAO.addStoreItem(new StoreItemModel(
-                itemImages[1],
-                itemNames[2],
+                itemImages[12],
+                itemNames[12],
                 "50K"));
 //        Collections.shuffle(data);
     }

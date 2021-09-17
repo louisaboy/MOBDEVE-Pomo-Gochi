@@ -103,14 +103,171 @@
 
     <ImageView
         android:id="@+id/iv_pet1"
-        android:layout_width="232dp"
-        android:layout_height="334dp"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_background"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/pet1" />
+
+    <ImageView
+        android:id="@+id/iv_pet2"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/pet2" />
+
+    <ImageView
+        android:id="@+id/iv_pet3"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="0.914"
+        app:srcCompat="@drawable/pet3" />
+
+    <ImageView
+        android:id="@+id/iv_pet4"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="0.296"
+        app:srcCompat="@drawable/pet4" />
+
+    <ImageView
+        android:id="@+id/iv_pet5"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="0.067"
+        app:srcCompat="@drawable/pet5" />
+
+    <ImageView
+        android:id="@+id/iv_pet6"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="0.754"
+        app:srcCompat="@drawable/pet6" />
+
+    <ImageView
+        android:id="@+id/iv_pet7"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.679"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="0.141"
+        app:srcCompat="@drawable/pet7" />
+
+    <ImageView
+        android:id="@+id/iv_pet8"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="0.521"
+        app:srcCompat="@drawable/pet8" />
+
+    <ImageView
+        android:id="@+id/iv_pet9"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="0.192"
+        app:srcCompat="@drawable/pet9" />
+
+    <ImageView
+        android:id="@+id/iv_pet10"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="0.795"
+        app:srcCompat="@drawable/pet10" />
+
+    <ImageView
+        android:id="@+id/iv_pet11"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="0.449"
+        app:srcCompat="@drawable/pet11" />
+
+    <ImageView
+        android:id="@+id/iv_pet12"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="0.21"
+        app:srcCompat="@drawable/pet12" />
+
+    <ImageView
+        android:id="@+id/iv_pet13"
+        android:layout_width="80dp"
+        android:layout_height="161dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/iv_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background"
+        app:layout_constraintVertical_bias="0.521"
+        app:srcCompat="@drawable/pet13" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
