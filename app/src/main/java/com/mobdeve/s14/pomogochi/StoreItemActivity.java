@@ -54,10 +54,6 @@ public class StoreItemActivity extends AppCompatActivity {
         tv_money.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
     }
 
-    // TODO There's a chance that I need to init store item at main activity since main activity will have access to cats din
-
-    // TODO onCreate is being called everytime so the init also gets call everytime duplicating the store items
-
     private void initDataStoreItems() {
         this.dataStoreItems = this.storeItemDAO.getAllStoreItem();
     }

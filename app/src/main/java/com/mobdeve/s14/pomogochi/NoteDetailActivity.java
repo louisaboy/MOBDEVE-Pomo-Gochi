@@ -88,8 +88,6 @@ public class NoteDetailActivity extends AppCompatActivity
         finish();
     }
 
-
-    // allen dito ka mag add ng logic for money
     public void doneNote(View view)
     {
         selectedNote.setDeleted(new Date());

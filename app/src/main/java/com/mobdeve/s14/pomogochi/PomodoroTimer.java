@@ -3,10 +3,7 @@ package com.mobdeve.s14.pomogochi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -15,28 +12,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.TimePicker;
-
-import java.sql.Time;
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import static android.provider.SyncStateContract.Helpers.update;
 
 public class PomodoroTimer extends AppCompatActivity {
 
-    private ImageView iv_start;
-    private ImageView iv_cancel;
-    private TextView tv_timer;
+    private ImageView btnStart;
+    private ImageView btnCancel;
+    private TextView tvTime;
     private String finaltime;
     private boolean timerStarted = false;
-    private ImageView iv_timer;
-    private ImageView iv_todo;
-    private ImageView iv_shop;
-    private ImageView iv_settings;
-    private ImageView iv_home;
-    private TextView tv_money;
+    private ImageView ivTimer;
+    private ImageView ivTodo;
+    private ImageView ibShop;
+    private ImageView ibSettings;
+    private ImageView ivHome;
+    private TextView tvMoney;
     private CountDownTimer countDownTimer;
     private Double remainingTime = 20.00;
 
@@ -46,18 +35,18 @@ public class PomodoroTimer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pomodoro_timer);
-        tv_timer = findViewById(R.id.tv_time);
-        iv_start = findViewById(R.id.btn_start);
-        iv_cancel = findViewById(R.id.btn_cancel);
+        tvTime = findViewById(R.id.tv_time);
+        btnStart = findViewById(R.id.btn_start);
+        btnCancel = findViewById(R.id.btn_cancel);
 
-        iv_timer = findViewById(R.id.iv_timer);
-        iv_todo = findViewById(R.id.iv_todo);
-        iv_shop = findViewById(R.id.ib_shop);
-        iv_settings = findViewById(R.id.ib_settings);
-        iv_home = findViewById(R.id.iv_home);
-        tv_money = findViewById(R.id.tv_money);
+        ivTimer = findViewById(R.id.iv_timer);
+        ivTodo = findViewById(R.id.iv_todo);
+        ibShop = findViewById(R.id.ib_shop);
+        ibSettings = findViewById(R.id.ib_settings);
+        ivHome = findViewById(R.id.iv_home);
+        tvMoney = findViewById(R.id.tv_money);
 
-        tv_money.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
+        tvMoney.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
     }
 
     public void popTimePicker(View view) {
@@ -67,7 +56,7 @@ public class PomodoroTimer extends AppCompatActivity {
             final NumberPicker num2 = (NumberPicker) mView.findViewById(R.id.num2);
             Button confirm = (Button) mView.findViewById(R.id.btnConfirm);
 
-            String [] stime = tv_timer.getText().toString().split(":");
+            String [] stime = tvTime.getText().toString().split(":");
             String minute = stime[0];
             String second = stime[1];
 
@@ -102,7 +91,7 @@ public class PomodoroTimer extends AppCompatActivity {
                     else
                         finaltime += String.valueOf(valuePicker2);
 
-                    tv_timer.setText(finaltime);
+                    tvTime.setText(finaltime);
                     dialog.dismiss();
                     if (timerStarted == true)
                     {
@@ -120,7 +109,7 @@ public class PomodoroTimer extends AppCompatActivity {
     }
 
     public void startTapped(View view) {
-        String [] stime = tv_timer.getText().toString().split(":");
+        String [] stime = tvTime.getText().toString().split(":");
         String s1 = stime[0];
         String s2 = stime[1];
         int num1 = Integer.parseInt(s1);
@@ -131,8 +120,8 @@ public class PomodoroTimer extends AppCompatActivity {
             if(timerStarted == false)
             {
                 timerStarted = true;
-                iv_start.setVisibility(View.INVISIBLE);
-                iv_cancel.setVisibility((View.VISIBLE));
+                btnStart.setVisibility(View.INVISIBLE);
+                btnCancel.setVisibility((View.VISIBLE));
 
                 countDownTimer = new CountDownTimer( (num1 * 60 + num2) * 1000, 1000) {
                     @Override
@@ -157,13 +146,13 @@ public class PomodoroTimer extends AppCompatActivity {
 
 
 
-                        tv_money.setText(String.valueOf(Integer.parseInt(tv_money.getText().toString()) + money));
+                        tvMoney.setText(String.valueOf(Integer.parseInt(tvMoney.getText().toString()) + money));
                         int total_money = MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY) + money;
-                        tv_money.setText(String.valueOf(total_money));
+                        tvMoney.setText(String.valueOf(total_money));
                         MainActivity.informationStorage.setCurrency(MainActivity.informationStorage.CURRENCY, total_money);
                         finishDialog.show();
 
-                        tv_timer.setText("00:00");
+                        tvTime.setText("00:00");
 
                     }
                 }.start();
@@ -214,24 +203,24 @@ public class PomodoroTimer extends AppCompatActivity {
             secondsFinal = "" + seconds;
         }
 
-        tv_timer.setText(minutesFinal + ":" + secondsFinal);
+        tvTime.setText(minutesFinal + ":" + secondsFinal);
 
 
     }
 
     private void reset() {
-        tv_timer.setText(finaltime);
+        tvTime.setText(finaltime);
         countDownTimer.cancel();
-        iv_start.setVisibility(View.VISIBLE);
-        iv_cancel.setVisibility(View.INVISIBLE);
+        btnStart.setVisibility(View.VISIBLE);
+        btnCancel.setVisibility(View.INVISIBLE);
         timerStarted = false;
     }
 
     private void reset(String value) {
-        tv_timer.setText("60:00");
+        tvTime.setText("60:00");
         countDownTimer.cancel();
-        iv_start.setVisibility(View.VISIBLE);
-        iv_cancel.setVisibility(View.INVISIBLE);
+        btnStart.setVisibility(View.VISIBLE);
+        btnCancel.setVisibility(View.INVISIBLE);
         timerStarted = false;
     }
 
