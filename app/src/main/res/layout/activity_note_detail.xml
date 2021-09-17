@@ -31,36 +31,17 @@
         app:layout_constraintTop_toTopOf="@+id/iv_money" />
 
     <ImageView
-<<<<<<< Updated upstream
-        android:id="@+id/iv_details"
-        android:layout_width="320dp"
-=======
+
         android:id="@+id/imageView2"
         android:layout_width="300dp"
->>>>>>> Stashed changes
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="2dp"
         android:src="@drawable/details"
-<<<<<<< Updated upstream
-        app:layout_constraintEnd_toStartOf="@+id/b_save"
-=======
->>>>>>> Stashed changes
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_money">
 
     </ImageView>
-
-    <TextView
-        android:id="@+id/tv_todo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="To Do List"
-        android:textColor="@color/white"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:visibility="gone" />
 
 
     <Button
@@ -86,16 +67,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="180dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="21dp"
         android:layout_marginEnd="180dp"
         android:text="Title"
         android:textColor="@color/darkGray"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_details" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/et_title"
