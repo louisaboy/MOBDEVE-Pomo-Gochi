@@ -35,6 +35,22 @@ public class MainActivity extends AppCompatActivity {
             iv_pet12,
             iv_pet13;
 
+    private float
+            xDown, yDown,
+            xDown1, yDown1,
+            xDown2, yDown2,
+            xDown3, yDown3,
+            xDown4, yDown4,
+            xDown5, yDown5,
+            xDown6, yDown6,
+            xDown7, yDown7,
+            xDown8, yDown8,
+            xDown9, yDown9,
+            xDown10, yDown10,
+            xDown11, yDown11,
+            xDown12, yDown12,
+            xDown13, yDown13;
+
     public static InformationStorage informationStorage;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -88,10 +104,10 @@ public class MainActivity extends AppCompatActivity {
         setIvPetOnTouchListener(iv_pet7);
         setIvPetOnTouchListener(iv_pet8);
         setIvPetOnTouchListener(iv_pet9);
-        setIvPetOnTouchListener(iv_pet1);
-        setIvPetOnTouchListener(iv_pet1);
-        setIvPetOnTouchListener(iv_pet1);
-        setIvPetOnTouchListener(iv_pet1);
+        setIvPetOnTouchListener(iv_pet10);
+        setIvPetOnTouchListener(iv_pet11);
+        setIvPetOnTouchListener(iv_pet12);
+        setIvPetOnTouchListener(iv_pet13);
 
 
         tv_money.setText(String.valueOf(informationStorage.getCurrency(informationStorage.CURRENCY)));
@@ -143,15 +159,11 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("ClickableViewAccessibility")
     private void setIvPetOnTouchListener(ImageView iv) {
         iv.setOnTouchListener((v, event) -> {
-            float xPos, yPos;
-            xPos = event.getX();
-            yPos = event.getY();
-
             switch (event.getActionMasked()) {
                 // the user just put his finger down on the image view
                 case MotionEvent.ACTION_DOWN:
-                    xPos = event.getX();
-                    yPos = event.getY();
+                    xDown = event.getX();
+                    yDown = event.getY();
                     break;
 
                 // the user moved his finger
@@ -161,8 +173,8 @@ public class MainActivity extends AppCompatActivity {
                     movedY = event.getY();
 
                     // calculate how much the user moved its fingers
-                    float distanceX = movedX - xPos;
-                    float distanceY = movedY - yPos;
+                    float distanceX = movedX - xDown;
+                    float distanceY = movedY - yDown;
 
                     // now move the view to that position
                     iv.setX(iv.getX() + distanceX);

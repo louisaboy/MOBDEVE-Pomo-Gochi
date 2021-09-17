@@ -31,5 +31,4 @@ public class InformationStorage {
     public boolean getFirst(String key){
         return (sharedPreferences.getBoolean(key, true));
     }
-
 }

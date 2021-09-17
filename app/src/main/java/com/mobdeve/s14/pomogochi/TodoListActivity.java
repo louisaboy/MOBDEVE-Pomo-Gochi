@@ -35,21 +35,18 @@ public class TodoListActivity extends AppCompatActivity
         tv_money.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
     }
 
-    private void loadFromDBToMemory()
-    {
+    private void loadFromDBToMemory() {
         SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(TodoListActivity.this);
         sqLiteManager.populateNoteListArray();
     }
 
-    private void setNoteAdapter()
-    {
+    private void setNoteAdapter() {
         NoteAdapter noteAdapter = new NoteAdapter(getApplicationContext(), Note.nonDeletedNotes());
         noteListView.setAdapter(noteAdapter);
     }
 
 
-    private void setOnClickListener()
-    {
+    private void setOnClickListener() {
         noteListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -62,7 +59,6 @@ public class TodoListActivity extends AppCompatActivity
             }
         });
     }
-
 
     public void newNote(View view)
     {
