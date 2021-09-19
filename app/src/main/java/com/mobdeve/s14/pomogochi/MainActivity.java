@@ -144,25 +144,22 @@ public class MainActivity extends AppCompatActivity {
     // intent to todo
     private void toToDo() {
         Intent toToDo = new Intent(this, TodoListActivity.class);
+        toToDo.putExtra("Music", bMusic);
         startActivity(toToDo);
-        Intent toPomodoroIntent = new Intent(this, TodoListActivity.class);
-        toPomodoroIntent.putExtra("Music", bMusic);
-        startActivity(toPomodoroIntent);
     }
 
     // intent to shop
     private void toShop() {
         Intent toShop = new Intent(this, StoreItemActivity.class);
+        toShop.putExtra("Music", bMusic);
         startActivity(toShop);
-        Intent toPomodoroIntent = new Intent(this, StoreItemActivity.class);
-        toPomodoroIntent.putExtra("Music", bMusic);
-        startActivity(toPomodoroIntent);
     }
 
     // intent to Settings
     private void toSettings() {
         Intent toSettings = new Intent(this, SettingsActivity.class);
-        startActivity(toSettings);
+        toSettings.putExtra("Music", bMusic);
+        startActivityForResult(toSettings, 0);
     }
 
     @Override
