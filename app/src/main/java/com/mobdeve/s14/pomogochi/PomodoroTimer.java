@@ -28,7 +28,6 @@ public class PomodoroTimer extends AppCompatActivity {
     private ImageView ivHome;
     private TextView tvMoney;
     private CountDownTimer countDownTimer;
-    private Double remainingTime = 20.00;
     private MediaPlayer music;
     public boolean bMusic;
     Music cMusic = new Music();
@@ -55,22 +54,29 @@ public class PomodoroTimer extends AppCompatActivity {
 
     // creates the Dialog for the Pomodoro Timer
     public void popTimePicker(View view) {
+            // Dialog variables including the numberpicker
             AlertDialog.Builder mBuilder = new AlertDialog.Builder(PomodoroTimer.this);
             View mView = getLayoutInflater().inflate(R.layout.dialog_time, null);
             final NumberPicker num1 = (NumberPicker) mView.findViewById(R.id.tv_num1);
             final NumberPicker num2 = (NumberPicker) mView.findViewById(R.id.tv_num2);
             Button confirm = (Button) mView.findViewById(R.id.b_confirm);
 
+            // splits the string time
             String [] stime = tvTime.getText().toString().split(":");
             String minute = stime[0];
             String second = stime[1];
 
+            // setting the min and max value of the numberpicker
             num1.setMaxValue(60);
             num1.setMinValue(0);
             num2.setMaxValue(60);
             num2.setMinValue(0);
+
+            // sets the numberpicker's value from the splitted string
             num1.setValue(Integer.parseInt(minute));
             num2.setValue(Integer.parseInt(second));
+
+            // builds the dialog
             mBuilder.setView(mView);
             final AlertDialog dialog = mBuilder.create();
             dialog.show();

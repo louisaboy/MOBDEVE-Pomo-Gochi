@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         tvMoney = findViewById(R.id.tv_money);
 
 
-        // for drag and drop function
+        // getting the id of each pet image views
         ivPet1 = findViewById(R.id.iv_pet1);
         ivPet2 = findViewById(R.id.iv_pet2);
         ivPet3 = findViewById(R.id.iv_pet3);
@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         ivPet12 = findViewById(R.id.iv_pet12);
         ivPet13 = findViewById(R.id.iv_pet13);
 
+        // drag functions for the image views
         setIvPetOnTouchListener(ivPet1);
         setIvPetOnTouchListener(ivPet2);
         setIvPetOnTouchListener(ivPet3);
@@ -99,14 +100,14 @@ public class MainActivity extends AppCompatActivity {
         setIvPetOnTouchListener(ivPet12);
         setIvPetOnTouchListener(ivPet13);
 
-
+        // sets the currency based on what was stored in the shared preference
         tvMoney.setText(String.valueOf(informationStorage.getCurrency(informationStorage.CURRENCY)));
+
+
+        // set on click listener for the icons
         ivTimer.setOnClickListener(v -> toPomodoro());
-
         ivTodo.setOnClickListener(v -> toToDo());
-
         ivShop.setOnClickListener(v -> toShop());
-
         ivSettings.setOnClickListener(v -> toSettings());
     }
 
@@ -134,32 +135,38 @@ public class MainActivity extends AppCompatActivity {
         music.release();
     }
 
+    // intent to pomodoro
     private void toPomodoro() {
         Intent toPomodoroIntent = new Intent(this, PomodoroTimer.class);
         startActivity(toPomodoroIntent);
     }
 
+    // intent to todo
     private void toToDo() {
-        Intent toPomodoroIntent = new Intent(this, TodoListActivity.class);
-        startActivity(toPomodoroIntent);
+        Intent toToDo = new Intent(this, TodoListActivity.class);
+        startActivity(toToDo);
     }
 
+    // intent to shop
     private void toShop() {
-        Intent toPomodoroIntent = new Intent(this, StoreItemActivity.class);
-        startActivity(toPomodoroIntent);
+        Intent toShop = new Intent(this, StoreItemActivity.class);
+        startActivity(toShop);
     }
 
+    // intent to Settings
     private void toSettings() {
-        Intent toPomodoroIntent = new Intent(this, SettingsActivity.class);
-        startActivity(toPomodoroIntent);
+        Intent toSettings = new Intent(this, SettingsActivity.class);
+        startActivity(toSettings);
     }
 
+    // initialize navigation
     private void initNavigation() {
         final int uiOptions = View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(uiOptions);
     }
 
+    // function for dragging the image views
     @SuppressLint("ClickableViewAccessibility")
     private void setIvPetOnTouchListener(ImageView iv) {
         iv.setOnTouchListener((v, event) -> {
@@ -190,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // sets the cat's visibility depending on the status of the pet whether owned or not
     public void setCatVisibility() {
         ArrayList<StoreItemModel> dataStoreItem = storeItemDAO.getAllStoreItem();
         if(dataStoreItem.get(0).getOwned()) {
