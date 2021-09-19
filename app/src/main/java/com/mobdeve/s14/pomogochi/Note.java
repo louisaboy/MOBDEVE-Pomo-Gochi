@@ -29,11 +29,14 @@ public class Note
         deleted = null;
     }
 
+    // deletes all the notes in the arraylist
     public static void deleteAll ()
     {
         noteArrayList.clear();
     }
 
+
+    // get the Id of the note that was clicked by the user
     public static Note getNoteForID(int passedNoteID)
     {
         for (Note note : noteArrayList)
@@ -45,6 +48,8 @@ public class Note
         return null;
     }
 
+
+    // Gets the non deleted notes inside the list and puts it in the arraylist
     public static ArrayList<Note> nonDeletedNotes()
     {
         ArrayList<Note> nonDeleted = new ArrayList<>();
@@ -57,41 +62,49 @@ public class Note
         return nonDeleted;
     }
 
+    // returns the Id of the note
     public int getId()
     {
         return id;
     }
 
+    // sets the Id of the note
     public void setId(int id)
     {
         this.id = id;
     }
 
+    // returns the title of the note
     public String getTitle()
     {
         return title;
     }
 
+    // sets the title of the note
     public void setTitle(String title)
     {
         this.title = title;
     }
 
+    // returns the description of the note
     public String getDescription()
     {
         return description;
     }
 
+    // sets the descriptions of the note
     public void setDescription(String description)
     {
         this.description = description;
     }
 
+    // checks if the entry in the list is already deleted
     public Date getDeleted()
     {
         return deleted;
     }
 
+    // sets the entry to deleted if the user deleted the list in the database
     public void setDeleted(Date deleted)
     {
         this.deleted = deleted;

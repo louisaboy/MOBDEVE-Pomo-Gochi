@@ -19,8 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tvMoney;
     private MediaPlayer music;
-    public boolean bMusic;
-    Music cMusic = new Music();
+    public String bMusic = "true";
 
     private StoreItemDAO storeItemDAO;
 
@@ -114,9 +113,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        bMusic = cMusic.getBMusic();
-
-        if (bMusic) {
+        if (bMusic.equals("true")) {
             music = MediaPlayer.create(MainActivity.this, R.raw.music);
             music.start();
         }
@@ -130,29 +127,51 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause(){
         super.onPause();
-        music.stop();
-        music.release();
+        if (bMusic.equals("true")) {
+            music.stop();
+            music.release();
+        }
     }
 
     private void toPomodoro() {
         Intent toPomodoroIntent = new Intent(this, PomodoroTimer.class);
+        toPomodoroIntent.putExtra("Music", bMusic);
         startActivity(toPomodoroIntent);
     }
 
     private void toToDo() {
         Intent toPomodoroIntent = new Intent(this, TodoListActivity.class);
+        toPomodoroIntent.putExtra("Music", bMusic);
         startActivity(toPomodoroIntent);
     }
 
     private void toShop() {
         Intent toPomodoroIntent = new Intent(this, StoreItemActivity.class);
+        toPomodoroIntent.putExtra("Music", bMusic);
         startActivity(toPomodoroIntent);
     }
 
     private void toSettings() {
         Intent toPomodoroIntent = new Intent(this, SettingsActivity.class);
-        startActivity(toPomodoroIntent);
+        toPomodoroIntent.putExtra("Music", bMusic);
+        startActivityForResult(toPomodoroIntent, 0);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Check that it is the SecondActivity with an OK result
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+
+                // Get String data from Intent
+                String returnString = data.getStringExtra("Music");
+                bMusic = returnString;
+            }
+        }
+    }
+
 
     private void initNavigation() {
         final int uiOptions = View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;

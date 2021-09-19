@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,8 +24,7 @@ public class StoreItemActivity extends AppCompatActivity {
     private ImageView iv_home;
     public static TextView tv_money;
     private MediaPlayer music;
-    public boolean bMusic;
-    Music cMusic = new Music();
+    public String bMusic;
 
     private RecyclerView rvStoreItems;
 
@@ -42,6 +42,8 @@ public class StoreItemActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_items);
+        Intent intent = getIntent();
+        bMusic = intent.getStringExtra("Music");
 
         this.initDataStoreItems();
         this.initRecyclerView();
@@ -75,9 +77,7 @@ public class StoreItemActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
 
-        bMusic = cMusic.getBMusic();
-
-        if (bMusic) {
+        if (bMusic.equals("true")) {
             music = MediaPlayer.create(StoreItemActivity.this, R.raw.music);
             music.start();
         }
@@ -86,7 +86,9 @@ public class StoreItemActivity extends AppCompatActivity {
     @Override
     protected void onPause(){
         super.onPause();
-        music.stop();
-        music.release();
+        if (bMusic.equals("true")) {
+            music.stop();
+            music.release();
+        }
     }
 }
