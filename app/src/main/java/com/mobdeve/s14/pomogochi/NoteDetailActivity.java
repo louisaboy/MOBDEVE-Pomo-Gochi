@@ -19,9 +19,10 @@ public class NoteDetailActivity extends AppCompatActivity
     private Note selectedNote;
     private TextView tvMoney;
     private MediaPlayer music;
-    public boolean bMusic;
-    Music cMusic = new Music();
+    public String bMusic;
 
+
+    // Creates an instance of NoteDetailActivity where it shows the entry that was clicked by the user.
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -31,6 +32,7 @@ public class NoteDetailActivity extends AppCompatActivity
         checkForEditNote();
     }
 
+    // Loads the widgets that were used in the activty layout
     private void initWidgets()
     {
         titleEditText = findViewById(R.id.et_title);
@@ -43,6 +45,9 @@ public class NoteDetailActivity extends AppCompatActivity
         tvMoney.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
     }
 
+
+    // this function checks if the user will either edit or add a new note in the list
+    // if the selectedNote is null the user is only allowed to add a new list
     private void checkForEditNote()
     {
         Intent previousIntent = getIntent();
@@ -62,6 +67,7 @@ public class NoteDetailActivity extends AppCompatActivity
         }
     }
 
+    // this function saves the inputs of the user to the database
     public void saveNote(View view)
     {
         SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
@@ -85,6 +91,7 @@ public class NoteDetailActivity extends AppCompatActivity
         finish();
     }
 
+    // this function delete the To Do entry of the user
     public void deleteNote(View view)
     {
         selectedNote.setDeleted(new Date());
@@ -93,6 +100,7 @@ public class NoteDetailActivity extends AppCompatActivity
         finish();
     }
 
+    // this function also deletes the entry in the To Do List but also credits him/her money for the task that he/she did
     public void doneNote(View view)
     {
         selectedNote.setDeleted(new Date());
@@ -107,25 +115,5 @@ public class NoteDetailActivity extends AppCompatActivity
         MainActivity.informationStorage.setCurrency(MainActivity.informationStorage.CURRENCY, total_money);
 
         finish();
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-
-        bMusic = cMusic.getBMusic();
-
-        if (bMusic) {
-            music = MediaPlayer.create(NoteDetailActivity.this, R.raw.music);
-            music.start();
-        }
-    }
-
-    @Override
-    protected void onPause()
-    {
-        super.onPause();
-        music.stop();
-        music.release();
     }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -29,8 +30,7 @@ public class PomodoroTimer extends AppCompatActivity {
     private TextView tvMoney;
     private CountDownTimer countDownTimer;
     private MediaPlayer music;
-    public boolean bMusic;
-    Music cMusic = new Music();
+    public String bMusic;
 
     private int money;
 
@@ -38,6 +38,8 @@ public class PomodoroTimer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pomodoro_timer);
+        Intent intent = getIntent();
+        bMusic = intent.getStringExtra("Music");
         tvTime = findViewById(R.id.tv_time);
         btnStart = findViewById(R.id.btn_start);
         btnCancel = findViewById(R.id.btn_cancel);
@@ -243,9 +245,7 @@ public class PomodoroTimer extends AppCompatActivity {
     protected void onResume()
     {
         super.onResume();
-        bMusic = cMusic.getBMusic();
-
-        if (bMusic) {
+        if (bMusic.equals("true")) {
             music = MediaPlayer.create(PomodoroTimer.this, R.raw.music);
             music.start();
         }
@@ -255,8 +255,10 @@ public class PomodoroTimer extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        music.stop();
-        music.release();
+        if (bMusic.equals("true")) {
+            music.stop();
+            music.release();
+        }
 
         if(timerStarted) {
             countDownTimer.cancel();
