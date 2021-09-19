@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tvMoney;
     private MediaPlayer music;
+    public boolean bMusic;
+    Music cMusic = new Music();
 
     private StoreItemDAO storeItemDAO;
 
@@ -111,8 +113,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        music = MediaPlayer.create(MainActivity.this, R.raw.genshin);
-        music.start();
+
+        bMusic = cMusic.getBMusic();
+
+        if (bMusic) {
+            music = MediaPlayer.create(MainActivity.this, R.raw.music);
+            music.start();
+        }
         tvMoney.setText(String.valueOf(informationStorage.getCurrency(informationStorage.CURRENCY)));
         this.storeItemDAO = new StoreItemDAOSQLImpl(this);
 

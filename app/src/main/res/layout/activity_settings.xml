@@ -17,25 +17,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/newest" />
 
-    <Switch
-        android:id="@+id/s_music"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="405dp"
-        android:layout_marginEnd="96dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/iv_reset"
         android:layout_width="264dp"
         android:layout_height="77dp"
-        android:layout_marginBottom="192dp"
+        android:layout_marginBottom="184dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/reset" />
+
+    <ImageView
+        android:id="@+id/iv_music"
+        android:layout_width="46dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="397dp"
+        android:layout_marginEnd="92dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/on" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

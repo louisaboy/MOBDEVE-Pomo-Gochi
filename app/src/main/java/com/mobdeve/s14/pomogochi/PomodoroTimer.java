@@ -29,6 +29,9 @@ public class PomodoroTimer extends AppCompatActivity {
     private TextView tvMoney;
     private CountDownTimer countDownTimer;
     private Double remainingTime = 20.00;
+    private MediaPlayer music;
+    public boolean bMusic;
+    Music cMusic = new Music();
 
     private int money;
 
@@ -230,11 +233,24 @@ public class PomodoroTimer extends AppCompatActivity {
         timerStarted = false;
     }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        bMusic = cMusic.getBMusic();
+
+        if (bMusic) {
+            music = MediaPlayer.create(PomodoroTimer.this, R.raw.music);
+            music.start();
+        }
+    }
 
     // timer Pause
     @Override
     protected void onPause() {
         super.onPause();
+        music.stop();
+        music.release();
 
         if(timerStarted) {
             countDownTimer.cancel();

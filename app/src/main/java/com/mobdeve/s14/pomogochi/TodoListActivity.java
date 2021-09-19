@@ -3,6 +3,7 @@ package com.mobdeve.s14.pomogochi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +14,9 @@ public class TodoListActivity extends AppCompatActivity
 {
     private ListView noteListView;
     private TextView tvMoney;
+    private MediaPlayer music;
+    public boolean bMusic;
+    Music cMusic = new Music();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -69,11 +73,25 @@ public class TodoListActivity extends AppCompatActivity
     @Override
     protected void onResume()
     {
+        super.onResume();
         tvMoney.setText(String.valueOf(MainActivity.informationStorage.getCurrency(MainActivity.informationStorage.CURRENCY)));
 
+        bMusic = cMusic.getBMusic();
+
+        if (bMusic) {
+            music = MediaPlayer.create(TodoListActivity.this, R.raw.music);
+            music.start();
+        }
+
         Note.deleteAll();
-        super.onResume();
         loadFromDBToMemory();
         setNoteAdapter();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        music.stop();
+        music.release();
     }
 }

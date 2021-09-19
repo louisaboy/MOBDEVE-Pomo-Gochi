@@ -22,6 +22,9 @@ public class StoreItemActivity extends AppCompatActivity {
     private ImageView iv_settings;
     private ImageView iv_home;
     public static TextView tv_money;
+    private MediaPlayer music;
+    public boolean bMusic;
+    Music cMusic = new Music();
 
     private RecyclerView rvStoreItems;
 
@@ -66,5 +69,24 @@ public class StoreItemActivity extends AppCompatActivity {
 
         this.storeItemAdapter = new StoreItemAdapter(this.dataStoreItems, this.storeItemDAO);
         this.rvStoreItems.setAdapter(this.storeItemAdapter);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        bMusic = cMusic.getBMusic();
+
+        if (bMusic) {
+            music = MediaPlayer.create(StoreItemActivity.this, R.raw.music);
+            music.start();
+        }
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        music.stop();
+        music.release();
     }
 }
