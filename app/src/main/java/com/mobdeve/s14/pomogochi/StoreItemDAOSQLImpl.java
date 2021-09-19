@@ -16,6 +16,7 @@ public class StoreItemDAOSQLImpl implements StoreItemDAO{
         storeItemDatabase = new StoreItemDatabase(context);
     }
 
+    // Inserts a new store item with Image ID, Name, Price, and Owned Status into Database
     @Override
     public boolean addStoreItem(StoreItemModel storeItem) {
         this.database = this.storeItemDatabase.getWritableDatabase();
@@ -32,6 +33,7 @@ public class StoreItemDAOSQLImpl implements StoreItemDAO{
         return (result != -1);
     }
 
+    // Updates a new store item's Owned Status into Database
     public boolean updateStoreItem(StoreItemModel storeItem) {
         this.database = this.storeItemDatabase.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -43,6 +45,7 @@ public class StoreItemDAOSQLImpl implements StoreItemDAO{
         return (result != -1);
     }
 
+    // Returns an arraylist with the item's from the database
     @Override
     public ArrayList<StoreItemModel> getAllStoreItem() {
         this.database = this.storeItemDatabase.getReadableDatabase();
@@ -66,6 +69,7 @@ public class StoreItemDAOSQLImpl implements StoreItemDAO{
         return storeItemArrayList;
     }
 
+    // Deletes the table from the Store Item Database
     @Override
     public boolean resetStoreItem() {
         this.database = this.storeItemDatabase.getWritableDatabase();

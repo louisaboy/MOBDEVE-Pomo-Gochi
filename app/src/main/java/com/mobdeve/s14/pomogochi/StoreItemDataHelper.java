@@ -6,6 +6,7 @@ import android.content.Context;
 
 public class StoreItemDataHelper {
 
+    // Initializes all of the store items for the user to view and purchase
     public void initializeData(StoreItemDAO storeItemDAO) {
 
         String[] itemNames = {
